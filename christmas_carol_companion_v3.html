@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Book Club Companion — A Christmas Carol</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+4:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; }
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: #1A1A2E;
+    background: #FAFBFD;
+    display: flex; flex-direction: column;
+    max-width: 420px; margin: 0 auto;
+    height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+  }
+  .header {
+    padding: 16px 24px 14px;
+    background: linear-gradient(180deg, #1A1A2E 0%, #16213E 100%);
+    color: #E8E8F0; flex-shrink: 0;
+  }
+  .header-title { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+  .header-author { font-size: 13px; color: #A0A0C0; margin-top: 2px; }
+  .progress-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+  .progress-track { flex: 1; height: 4px; background: #2A2A4A; border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, #7B68AE, #C4A7E7); transition: width 0.4s ease; }
+  .progress-pct { font-size: 12px; color: #A0A0C0; font-weight: 500; min-width: 32px; text-align: right; }
+  .content { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .panel { display: none; }
+  .panel.active { display: block; }
+  .tab-bar { display: flex; border-top: 1px solid #E0E0EC; background: #FAFBFD; flex-shrink: 0; padding-bottom: env(safe-area-inset-bottom, 0); }
+  .tab-btn { flex: 1; padding: 10px 0 8px; border: none; background: transparent; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 2px; -webkit-tap-highlight-color: transparent; outline: none; }
+  .tab-icon { font-size: 20px; transition: opacity 0.2s; }
+  .tab-btn.inactive .tab-icon { opacity: 0.4; }
+  .tab-label { font-size: 10px; font-weight: 600; transition: color 0.2s; }
+  .tab-btn.active .tab-label { color: #7B68AE; }
+  .tab-btn.inactive .tab-label { color: #B0B0C8; }
+
+  .section-head { padding: 20px 24px 4px; }
+  .section-title { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; font-weight: 700; color: #1A1A2E; }
+  .section-subtitle { font-size: 13px; color: #6B6B8D; margin-top: 2px; margin-bottom: 12px; }
+  .position-panel .section-head { border-bottom: 1px solid #E0E0EC; padding-bottom: 12px; }
+  .scene-list { padding: 8px 16px 16px; }
+  .part-label { font-family: 'Playfair Display', Georgia, serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; padding: 16px 4px 6px; }
+  .part-label.unlocked { color: #7B68AE; }
+  .part-label.locked { color: #C0C0D8; }
+  .scene-card { display: block; width: 100%; text-align: left; border: 1px solid transparent; border-radius: 10px; padding: 12px 14px; margin-bottom: 4px; cursor: pointer; background: #FDFCFE; transition: all 0.15s; -webkit-tap-highlight-color: transparent; outline: none; }
+  .scene-card:active { transform: scale(0.98); }
+  .scene-card.current { border: 2px solid #7B68AE; background: #F5F3FA; }
+  .scene-card.future { opacity: 0.4; cursor: default; background: #F0F0F6; }
+  .scene-card.future:active { transform: none; }
+  .scene-card-head { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+  .check-circle { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #C8C0DC; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #fff; flex-shrink: 0; transition: all 0.2s; }
+  .check-circle.read { background: #7B68AE; border-color: #7B68AE; }
+  .scene-card-title { font-family: 'Playfair Display', Georgia, serif; font-size: 14px; font-weight: 600; color: #1A1A2E; }
+  .scene-card.future .scene-card-title { color: #A0A0B8; }
+  .scene-card-micro { font-size: 13px; line-height: 1.45; color: #4A4A6A; padding-left: 28px; }
+  .scene-card.next-up .scene-card-micro { color: #7B7B9A; }
+  .scene-card-locked { font-size: 12px; color: #B0B0C8; padding-left: 28px; font-style: italic; }
+
+  .tracker-list { padding: 0 24px 24px; }
+  .tracker-card { width: 100%; text-align: left; display: flex; align-items: center; gap: 12px; background: transparent; border: 1px solid transparent; border-radius: 10px; padding: 10px 14px; cursor: pointer; transition: all 0.15s; -webkit-tap-highlight-color: transparent; margin-bottom: 2px; outline: none; }
+  .tracker-card:active { transform: scale(0.98); }
+  .tracker-card.open { background: #F5F3FA; border-color: #D8D0E8; }
+
+  .count-bubble {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 15px; font-weight: 600;
+    flex-shrink: 0; transition: all 0.2s;
+  }
+  .count-bubble.active { background: #7B68AE; color: #fff; }
+  .count-bubble.inactive { background: #fff; color: #7B68AE; border: 2px solid #D8D0E8; }
+
+  .card-name { font-family: 'Playfair Display', Georgia, serif; font-size: 15px; font-weight: 600; color: #1A1A2E; }
+  .card-role { font-size: 12px; color: #6B6B8D; margin-top: 1px; }
+  .badge { font-size: 11px; padding: 1px 7px; border-radius: 20px; margin-left: 6px; white-space: nowrap; }
+  .badge-spirit { color: #7B68AE; background: #F0ECF8; }
+  .badge-vision { color: #8B7355; background: #F5F0E8; }
+  .chevron { font-size: 18px; color: #B0B0C8; transition: transform 0.2s; margin-left: auto; }
+  .tracker-card.open .chevron { transform: rotate(90deg); }
+
+  .card-detail { padding: 12px 14px 14px 62px; background: #F5F3FA; border-radius: 0 0 10px 10px; font-size: 13px; line-height: 1.5; color: #4A4A6A; margin-bottom: 4px; display: none; }
+  .card-detail.open { display: block; }
+  .card-detail p { margin: 0 0 6px; }
+  .card-detail .meta { font-size: 12px; color: #6B6B8D; margin-top: 2px; }
+  .card-detail .meta strong { font-weight: 600; }
+  .status-box { background: #FCFBFE; border: 1px solid #E0E0EC; border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 13px; color: #4A4A6A; }
+  .status-label { font-size: 11px; color: #7B68AE; font-weight: 600; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .recap-timeline { padding: 0 24px 24px; position: relative; padding-left: 44px; }
+  .timeline-line { position: absolute; left: 30px; top: 0; bottom: 0; width: 2px; background: #E0E0EC; }
+  .recap-part-label { font-family: 'Playfair Display', Georgia, serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #7B68AE; padding: 12px 0 6px; }
+  .recap-item { position: relative; margin-bottom: 12px; }
+  .recap-dot { position: absolute; left: -22px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: #D0C8E0; border: 2px solid #FAFBFD; }
+  .recap-dot.current { background: #7B68AE; }
+  .recap-ch-title { font-family: 'Playfair Display', Georgia, serif; font-size: 13px; font-weight: 600; color: #1A1A2E; margin-bottom: 2px; }
+  .recap-micro { font-size: 13px; line-height: 1.45; color: #4A4A6A; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-title">A Christmas Carol</div>
+  <div class="header-author">Charles Dickens</div>
+  <div class="progress-row">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-pct" id="progressPct"></span>
+  </div>
+</div>
+
+<div class="content" id="content">
+  <div class="panel position-panel active" id="panel-position"></div>
+  <div class="panel" id="panel-characters"></div>
+  <div class="panel" id="panel-locations"></div>
+  <div class="panel" id="panel-recap"></div>
+</div>
+
+<div class="tab-bar" id="tabBar"></div>
+
+<script>
+const STAVES = ["Stave I — Marley's Ghost","Stave II — The First of the Three Spirits","Stave III — The Second of the Three Spirits","Stave IV — The Last of the Spirits","Stave V — The End of It"];
+
+const CHUNKS = [
+  {id:"S1-01",stave:1,part:0,title:"Marley Is Dead — Introducing Scrooge",micro:"The narrator establishes that Marley is dead, then introduces Scrooge as a cold, miserly old man at his counting-house on Christmas Eve.",chars:["SCROOGE","BOB"],locs:["COUNTING"],pct:0},
+  {id:"S1-02",stave:1,part:0,title:"Fred's Visit and the Charity Collectors",micro:"Scrooge's cheerful nephew Fred visits to wish him Merry Christmas and is rebuffed. Two charity collectors arrive and are turned away.",chars:["SCROOGE","FRED","BOB","CHARITY"],locs:["COUNTING"],pct:4},
+  {id:"S1-03",stave:1,part:0,title:"Closing the Office — Scrooge Walks Home",micro:"Scrooge reluctantly grants Bob Christmas Day off, then walks home alone through the dark, foggy streets to his gloomy chambers.",chars:["SCROOGE","BOB"],locs:["COUNTING","STREETS","CHAMBERS"],pct:8},
+  {id:"S1-04",stave:1,part:0,title:"The Knocker and the Hearse",micro:"Scrooge sees Marley's face in the door-knocker, then hears chains and bells throughout the house as he sits by a dying fire.",chars:["SCROOGE"],locs:["CHAMBERS"],pct:12},
+  {id:"S1-05",stave:1,part:0,title:"Marley's Ghost Appears",micro:"Marley's ghost passes through the locked door, wrapped in chains and cashboxes. Scrooge tries to deny what he's seeing.",chars:["SCROOGE","MARLEY"],locs:["CHAMBERS"],pct:15},
+  {id:"S1-06",stave:1,part:0,title:"Marley's Warning",micro:"Marley explains he forged his chain in life through greed. He warns Scrooge that three spirits will visit — his only chance of escaping the same fate.",chars:["SCROOGE","MARLEY"],locs:["CHAMBERS"],pct:19},
+  {id:"S2-01",stave:2,part:1,title:"Scrooge Wakes — Confusion About Time",micro:"Scrooge wakes in darkness, confused by clocks that say twelve. He lies awake wrestling with whether Marley's visit was real.",chars:["SCROOGE"],locs:["CHAMBERS"],pct:23},
+  {id:"S2-02",stave:2,part:1,title:"The Ghost of Christmas Past Appears",micro:"A strange, child-like yet ancient figure appears — the Ghost of Christmas Past. It wears white, with light springing from its head.",chars:["SCROOGE","GHOST_PAST"],locs:["CHAMBERS"],pct:27},
+  {id:"S2-03",stave:2,part:1,title:"Young Scrooge Alone at School",micro:"The spirit flies Scrooge to the countryside. They visit his old school, where the young Scrooge sits alone reading while all other boys have gone home.",chars:["SCROOGE","GHOST_PAST","YOUNG_SCROOGE"],locs:["SCHOOL"],pct:31},
+  {id:"S2-04",stave:2,part:1,title:"Fan Rescues Young Scrooge — Fezziwig's Warehouse",micro:"Little Fan arrives to bring him home — 'Father is so much kinder.' The scene shifts to old Fezziwig's warehouse, where young apprentice Scrooge prepares for a grand party.",chars:["SCROOGE","GHOST_PAST","YOUNG_SCROOGE","FAN","FEZZIWIG","DICK"],locs:["SCHOOL","FEZZIWIG_W"],pct:35},
+  {id:"S2-05",stave:2,part:1,title:"Fezziwig's Christmas Ball",micro:"Fezziwig throws a glorious party with music, dancing, food, and warmth. Scrooge reflects that small expenditure created immense happiness — then thinks guiltily of Bob.",chars:["SCROOGE","GHOST_PAST","YOUNG_SCROOGE","FEZZIWIG","MRS_FEZZIWIG","DICK"],locs:["FEZZIWIG_W"],pct:38},
+  {id:"S2-06",stave:2,part:1,title:"Belle Releases Scrooge",micro:"Belle breaks off her engagement because greed has replaced her in Scrooge's heart. A later vision shows Belle happily married. Scrooge forces the cap onto the spirit.",chars:["SCROOGE","GHOST_PAST","YOUNG_SCROOGE","BELLE","BELLE_HUSBAND"],locs:["BELLE_ROOM","BELLE_HOME","CHAMBERS"],pct:42},
+  {id:"S3-01",stave:3,part:2,title:"The Ghost of Christmas Present",micro:"Scrooge wakes to find his room transformed into a feast. A giant, jolly spirit in a green robe sits on a throne of food.",chars:["SCROOGE","GHOST_PRESENT"],locs:["CHAMBERS"],pct:46},
+  {id:"S3-02",stave:3,part:2,title:"Christmas Morning in the Streets",micro:"The spirit takes Scrooge through London on Christmas morning. People bustle joyfully to church and bakers' shops. The spirit blesses the food of the poor.",chars:["SCROOGE","GHOST_PRESENT"],locs:["STREETS"],pct:50},
+  {id:"S3-03",stave:3,part:2,title:"The Cratchits' Christmas — Tiny Tim",micro:"The Cratchit family prepares their modest dinner with enormous excitement. Tiny Tim arrives on Bob's shoulder. They sit down to a goose they treat as the finest feast.",chars:["SCROOGE","GHOST_PRESENT","BOB","MRS_CRATCHIT","TINY_TIM","MARTHA","PETER","BELINDA"],locs:["CRATCHIT"],pct:54},
+  {id:"S3-04",stave:3,part:2,title:"Toasting Scrooge — Tiny Tim's Future",micro:"Bob toasts Scrooge as 'the Founder of the Feast.' Scrooge asks about Tiny Tim and is told the child will die unless things change.",chars:["SCROOGE","GHOST_PRESENT","BOB","MRS_CRATCHIT","TINY_TIM"],locs:["CRATCHIT"],pct:58},
+  {id:"S3-05",stave:3,part:2,title:"Christmas Across Britain",micro:"The spirit whisks Scrooge across Britain — miners on a moor, lighthouse keepers at sea, sailors on a ship. Christmas is celebrated everywhere.",chars:["SCROOGE","GHOST_PRESENT"],locs:["BRITAIN"],pct:62},
+  {id:"S3-06",stave:3,part:2,title:"Fred's Christmas Party",micro:"The spirit takes Scrooge to Fred's party. Guests laugh about Scrooge's 'humbug,' but Fred defends his uncle. Scrooge enjoys the games despite being invisible.",chars:["SCROOGE","GHOST_PRESENT","FRED","FRED_WIFE"],locs:["FRED_HOME"],pct:65},
+  {id:"S3-07",stave:3,part:2,title:"Ignorance and Want — The Spirit Departs",micro:"The spirit ages rapidly. Beneath its robe, Scrooge sees two wretched children: Ignorance and Want. The bell strikes twelve; a dark phantom approaches.",chars:["SCROOGE","GHOST_PRESENT","IGN_WANT"],locs:["DARK_LOC"],pct:69},
+  {id:"S4-01",stave:4,part:3,title:"The Ghost of Christmas Yet to Come",micro:"A silent, black-robed phantom appears. It communicates only by pointing. Scrooge, terrified, follows it into the city.",chars:["SCROOGE","GHOST_FUTURE"],locs:["STREETS"],pct:73},
+  {id:"S4-02",stave:4,part:3,title:"Businessmen Discuss a Death — Old Joe's Shop",micro:"Businessmen casually discuss someone's death. Three people bring stolen belongings from a dead man's house to a fence called Old Joe.",chars:["SCROOGE","GHOST_FUTURE","OLD_JOE","MRS_DILBER"],locs:["EXCHANGE","OLD_JOE_SHOP"],pct:77},
+  {id:"S4-03",stave:4,part:3,title:"The Debtors' Relief — The Body on the Bed",micro:"A young couple feels relief — the creditor who held their debt has died. The spirit shows a dark room with a covered body. Scrooge cannot lift the sheet.",chars:["SCROOGE","GHOST_FUTURE"],locs:["FUTURE_ROOMS"],pct:81},
+  {id:"S4-04",stave:4,part:3,title:"Tiny Tim's Death",micro:"The Cratchit family mourns. Tiny Tim has died. Bob visits the child's body and kisses the little face. He tells his family about meeting Fred's nephew, who offered kind words.",chars:["SCROOGE","GHOST_FUTURE","BOB","MRS_CRATCHIT","PETER"],locs:["CRATCHIT"],pct:85},
+  {id:"S4-05",stave:4,part:3,title:"Scrooge's Grave — The Vow to Change",micro:"The spirit leads Scrooge to a neglected grave: EBENEZER SCROOGE. He vows to change and honour Christmas. He clutches the spirit's robe — it dwindles into a bedpost.",chars:["SCROOGE","GHOST_FUTURE"],locs:["GRAVEYARD","CHAMBERS"],pct:88},
+  {id:"S5-01",stave:5,part:4,title:"Scrooge Wakes Transformed",micro:"Scrooge wakes giddy with joy. He laughs, cries, celebrates — the bed curtains are still there! The future can be changed. It's Christmas morning.",chars:["SCROOGE"],locs:["CHAMBERS"],pct:92},
+  {id:"S5-02",stave:5,part:4,title:"Scrooge's Christmas",micro:"Scrooge sends an enormous turkey to the Cratchits, gives a huge donation to charity, joins Fred's party, and gleefully raises Bob's salary the next morning.",chars:["SCROOGE","CHARITY","FRED","FRED_WIFE","BOB"],locs:["CHAMBERS","STREETS","FRED_HOME","COUNTING"],pct:96},
+];
+
+// Position-aware character descriptions — keyed by character ID, each an array of {from, desc}
+// The system shows the latest description at or before the reader's position.
+// Cumulative-knowledge descriptions: what we KNOW about this character so far, not what they're doing right now.
+const CHAR_DESCS = {
+  SCROOGE: [
+    {from:"S1-01",desc:"An old miser. Cold, solitary, universally disliked. Partner in Scrooge and Marley."},
+    {from:"S1-06",desc:"An old miser warned by Marley's ghost that three spirits will visit — his only chance to escape an eternity in chains."},
+    {from:"S2-06",desc:"An old miser who was once a lonely, neglected boy, then a happy apprentice, then a young man who lost the woman he loved to greed."},
+    {from:"S3-04",desc:"A miser beginning to see the cost of his ways. Once a lonely boy, a happy apprentice, a man who lost love to greed. Now confronted with the poverty of his clerk's family — told a child may die because of men like him."},
+    {from:"S4-05",desc:"A miser who has seen the full arc: lonely boy, lost love, a dying child, an unmourned death, and his own neglected grave. Has vowed to change."},
+    {from:"S5-02",desc:"Once a cold miser, now transformed. Generous, joyful. Was a lonely boy, a happy apprentice, lost love to greed, saw the darkest future — and chose differently."},
+  ],
+  MARLEY: [
+    {from:"S1-01",desc:"Scrooge's deceased business partner. Dead seven years."},
+    {from:"S1-06",desc:"Scrooge's dead partner. Appeared as a ghost bound in chains forged by a lifetime of greed. Warned Scrooge of three spirits — his only chance."},
+  ],
+  BOB: [
+    {from:"S1-01",desc:"Scrooge's clerk. Poorly paid, works in freezing conditions."},
+    {from:"S3-03",desc:"Scrooge's underpaid clerk. A devoted father who carries his disabled son on his shoulder. Makes the best of very little."},
+    {from:"S3-04",desc:"Scrooge's underpaid clerk. Devoted father to Tiny Tim. Loyal enough to toast Scrooge even on Christmas Day. The spirit has warned that Tim may die."},
+    {from:"S4-04",desc:"Scrooge's clerk. A devoted father. In a future vision, Tiny Tim has died and the family mourns."},
+    {from:"S5-02",desc:"Scrooge's clerk, now with a raised salary and a promise of help. A devoted father whose loyalty was finally repaid."},
+  ],
+  TINY_TIM: [
+    {from:"S3-03",desc:"Bob's youngest son. Small, disabled, walks with a crutch. Sweet and brave."},
+    {from:"S3-04",desc:"Bob's youngest son. Disabled, walks with a crutch. The spirit has warned he will die unless things change."},
+    {from:"S4-04",desc:"Bob's youngest son. Disabled. The spirit warned he would die — and in the future vision, he has."},
+    {from:"S5-02",desc:"Bob's youngest son. Alive and well — the dark future averted. Scrooge has become a second father to him."},
+  ],
+  MRS_CRATCHIT: [
+    {from:"S3-03",desc:"Bob's wife. Resourceful and proud. Creates a festive Christmas from almost nothing."},
+    {from:"S3-04",desc:"Bob's wife. Resourceful, proud, openly resentful of Scrooge for how little he pays Bob."},
+    {from:"S4-04",desc:"Bob's wife. Resourceful and proud. Resentful of Scrooge. In the future vision, mourning Tiny Tim."},
+  ],
+  FRED: [
+    {from:"S1-02",desc:"Scrooge's nephew. Son of Scrooge's late sister Fan. Warm, cheerful, refuses to give up on his uncle."},
+    {from:"S3-06",desc:"Scrooge's nephew. Son of Fan. Warm and persistent — defends Scrooge even when his guests mock the old man."},
+    {from:"S5-02",desc:"Scrooge's nephew. Warm and persistent. Son of Fan. Finally rewarded when Scrooge arrives at his party."},
+  ],
+  FRED_WIFE: [{from:"S3-06",desc:"Fred's wife. Pretty, with a dimpled face. Good-humoured."}],
+  GHOST_PAST: [
+    {from:"S2-02",desc:"The first spirit. Both child and elder. Wears white, emits light from its head. Shows visions of the past."},
+    {from:"S2-06",desc:"The first spirit. Showed Scrooge his lonely boyhood, Fezziwig's warmth, and Belle's departure. Extinguished by Scrooge."},
+  ],
+  GHOST_PRESENT: [
+    {from:"S3-01",desc:"The second spirit. A giant in a green robe with a holly wreath. Jolly, generous. Shows the world as it is now."},
+    {from:"S3-07",desc:"The second spirit. Showed the Cratchits, Fred's party, and Christmas across Britain. Aged in a single night. Hid Ignorance and Want beneath its robe."},
+  ],
+  GHOST_FUTURE: [
+    {from:"S4-01",desc:"The third spirit. A silent black phantom. Communicates only by pointing. Shows the future."},
+    {from:"S4-05",desc:"The third spirit. Showed an unmourned death, thieves, Tiny Tim's death, and Scrooge's own neglected grave."},
+  ],
+  CHARITY: [
+    {from:"S1-02",desc:"Two gentlemen collecting for the poor at Christmas. Scrooge turned them away."},
+    {from:"S5-02",desc:"Collectors for the poor. Scrooge turned them away on Christmas Eve, then gave an enormous donation on Christmas Day."},
+  ],
+  FAN: [{from:"S2-04",desc:"Scrooge's younger sister. Small and loving. Rescued him from the lonely school. Died young — Fred is her son."}],
+  FEZZIWIG: [{from:"S2-04",desc:"Scrooge's old employer. Jolly, generous. Hosted a magnificent Christmas ball. A model of what a good master looks like."}],
+  MRS_FEZZIWIG: [{from:"S2-05",desc:"Fezziwig's wife. Broad, beaming, dances energetically."}],
+  DICK: [{from:"S2-04",desc:"Scrooge's fellow apprentice at Fezziwig's. Scrooge was fond of him."}],
+  BELLE: [{from:"S2-06",desc:"Scrooge's former fiancée. Broke off the engagement when greed displaced her. Later seen happily married with children."}],
+  BELLE_HUSBAND: [{from:"S2-06",desc:"Belle's husband. Mentioned seeing old Scrooge alone at his desk while Marley lay dying."}],
+  YOUNG_SCROOGE: [
+    {from:"S2-03",desc:"Scrooge as a boy. Left alone at school during Christmas. Finds comfort in storybooks."},
+    {from:"S2-04",desc:"Scrooge from boy to apprentice. Lonely child, then eager and full of life at Fezziwig's."},
+    {from:"S2-06",desc:"Scrooge from boyhood to young manhood. Lonely child, happy apprentice, then a man whose heart turned to gold. Belle saw the change before he did."},
+  ],
+  MARTHA: [{from:"S3-03",desc:"Eldest Cratchit daughter. Works at a milliner's. Arrives late for Christmas dinner."}],
+  PETER: [
+    {from:"S3-03",desc:"A Cratchit son. Wears Bob's enormous hand-me-down shirt collar with pride."},
+    {from:"S4-04",desc:"A Cratchit son. In the future vision, reads to the family as they mourn Tiny Tim."},
+  ],
+  BELINDA: [{from:"S3-03",desc:"Second Cratchit daughter. Helps with the Christmas dinner."}],
+  IGN_WANT: [{from:"S3-07",desc:"Two starving children beneath the Spirit's robe. The boy is Ignorance; the girl is Want. 'Beware them both.'"}],
+  OLD_JOE: [{from:"S4-02",desc:"A disreputable fence. Buys stolen goods from a dead man's household."}],
+  MRS_DILBER: [{from:"S4-02",desc:"A laundress who stole from the dead man's room."}],
+};
+
+const LOC_DESCS = {
+  COUNTING: [
+    {from:"S1-01",desc:"Scrooge & Marley's counting-house. A gloomy office in the City of London. Bob shivers with a tiny fire; Scrooge keeps the coal box."},
+    {from:"S5-02",desc:"Scrooge & Marley's counting-house. Once gloomy and freezing. Now the place where Scrooge raised Bob's salary and promised to help his family."},
+  ],
+  CHAMBERS: [
+    {from:"S1-03",desc:"Scrooge's rooms in a dark building that was once a warehouse. Cold, cheap, cheerless."},
+    {from:"S1-06",desc:"Scrooge's gloomy rooms. Marley's face appeared in the door-knocker. His ghost passed through the locked door and delivered a warning."},
+    {from:"S3-01",desc:"Scrooge's rooms. Once gloomy, now transformed into a Christmas feast by the Ghost of Christmas Present."},
+    {from:"S5-01",desc:"Scrooge's rooms. Scene of Marley's warning, three spirit visits, and finally Scrooge's joyful awakening on Christmas morning."},
+  ],
+  STREETS: [
+    {from:"S1-03",desc:"London streets. Dark, foggy, cold on Christmas Eve."},
+    {from:"S3-02",desc:"London streets. Dark on Christmas Eve, joyful on Christmas morning — people going to church and bakers' shops."},
+    {from:"S5-02",desc:"London streets. Once dark and unwelcoming. Now the place where Scrooge greets everyone with 'Merry Christmas!'"},
+  ],
+  SCHOOL: [{from:"S2-03",desc:"A country school from Scrooge's boyhood. Cold and empty during the Christmas holidays. Young Scrooge reads alone."}],
+  FEZZIWIG_W: [{from:"S2-04",desc:"Old Fezziwig's warehouse, transformed for the Christmas Eve ball. Warm, bright, full of music and dancing."}],
+  BELLE_ROOM: [{from:"S2-06",desc:"The room where Belle released Scrooge from their engagement. She saw that money had displaced her in his heart."}],
+  BELLE_HOME: [{from:"S2-06",desc:"Belle's family home years later. Warm, happy, full of children."}],
+  CRATCHIT: [
+    {from:"S3-03",desc:"The Cratchit home. A modest four-room house, small but full of warmth, love, and the smell of goose."},
+    {from:"S4-04",desc:"The Cratchit home. Once full of warmth and goose. In the future vision, the family mourns. Tiny Tim's chair is empty."},
+    {from:"S5-02",desc:"The Cratchit home. Modest but warm. Scrooge sent an enormous turkey here anonymously on Christmas Day."},
+  ],
+  BRITAIN: [{from:"S3-05",desc:"A tour across Britain — miners on a moor, lighthouse keepers at sea, sailors on a ship. Christmas reaches everywhere."}],
+  FRED_HOME: [
+    {from:"S3-06",desc:"Fred's warm, lively home. A Christmas party full of laughter and games."},
+    {from:"S5-02",desc:"Fred's home. Where Scrooge finally arrived in person and was welcomed with joy."},
+  ],
+  DARK_LOC: [{from:"S3-07",desc:"A dark, unspecified place where Ignorance and Want were revealed, and the third phantom first appeared."}],
+  EXCHANGE: [{from:"S4-01",desc:"London's business exchange. Businessmen discussed someone's death with callous indifference."}],
+  OLD_JOE_SHOP: [{from:"S4-02",desc:"A filthy junk shop. Three thieves brought stolen goods from a dead man's house to Old Joe the fence."}],
+  FUTURE_ROOMS: [{from:"S4-03",desc:"A bare, dark room with a covered body on a bed. The curtains and blankets stolen. Scrooge could not lift the sheet."}],
+  GRAVEYARD: [{from:"S4-05",desc:"A neglected churchyard. Scrooge's own gravestone — the final revelation of the third spirit."}],
+};
+
+const CHAR_META = {
+  SCROOGE:{name:"Ebenezer Scrooge",short:"Scrooge",role:"Protagonist",intro:"S1-01",color:"#3D405B"},
+  MARLEY:{name:"Jacob Marley",short:"Marley's Ghost",role:"The warning",intro:"S1-05",color:"#6C757D"},
+  BOB:{name:"Bob Cratchit",short:"Bob Cratchit",role:"Scrooge's clerk",intro:"S1-01",color:"#2D6A4F"},
+  TINY_TIM:{name:"Tiny Tim",short:"Tiny Tim",role:"Emotional heart of the story",intro:"S3-03",color:"#48BFE3"},
+  MRS_CRATCHIT:{name:"Mrs. Cratchit",short:"Mrs. Cratchit",role:"Bob's wife",intro:"S3-03",color:"#7B2D8E"},
+  MARTHA:{name:"Martha Cratchit",short:"Martha",role:"Eldest Cratchit daughter",intro:"S3-03",color:"#C77DFF"},
+  PETER:{name:"Peter Cratchit",short:"Peter",role:"A Cratchit son",intro:"S3-03",color:"#9D4EDD"},
+  BELINDA:{name:"Belinda Cratchit",short:"Belinda",role:"Second Cratchit daughter",intro:"S3-03",color:"#E0AAFF"},
+  FRED:{name:"Fred",short:"Fred",role:"Scrooge's nephew",intro:"S1-02",color:"#D62828"},
+  FRED_WIFE:{name:"Fred's Wife",short:"Fred's wife",role:"Fred's wife",intro:"S3-06",color:"#F77F00"},
+  FAN:{name:"Fan",short:"Fan",role:"Scrooge's sister (vision)",intro:"S2-04",color:"#FCBF49",badge:"vision"},
+  FEZZIWIG:{name:"Mr. Fezziwig",short:"Fezziwig",role:"Scrooge's former master (vision)",intro:"S2-04",color:"#EAE2B7",badge:"vision"},
+  MRS_FEZZIWIG:{name:"Mrs. Fezziwig",short:"Mrs. Fezziwig",role:"Fezziwig's wife (vision)",intro:"S2-05",color:"#D4A373",badge:"vision"},
+  DICK:{name:"Dick Wilkins",short:"Dick Wilkins",role:"Fellow apprentice (vision)",intro:"S2-04",color:"#CCD5AE",badge:"vision"},
+  BELLE:{name:"Belle",short:"Belle",role:"Scrooge's former fiancée (vision)",intro:"S2-06",color:"#E07A5F",badge:"vision"},
+  BELLE_HUSBAND:{name:"Belle's Husband",short:"Belle's husband",role:"Belle's husband (vision)",intro:"S2-06",color:"#81B29A",badge:"vision"},
+  YOUNG_SCROOGE:{name:"Young Scrooge",short:"Young Scrooge",role:"Scrooge in the past (vision)",intro:"S2-03",color:"#8D99AE",badge:"vision"},
+  GHOST_PAST:{name:"Ghost of Christmas Past",short:"Christmas Past",role:"First spirit",intro:"S2-02",color:"#FFD166",badge:"spirit"},
+  GHOST_PRESENT:{name:"Ghost of Christmas Present",short:"Christmas Present",role:"Second spirit",intro:"S3-01",color:"#06D6A0",badge:"spirit"},
+  GHOST_FUTURE:{name:"Ghost of Christmas Yet to Come",short:"Christmas Future",role:"Third spirit",intro:"S4-01",color:"#1D1D1D",badge:"spirit"},
+  CHARITY:{name:"Charity Collectors",short:"Charity collectors",role:"Collectors for the poor",intro:"S1-02",color:"#588157"},
+  IGN_WANT:{name:"Ignorance & Want",short:"Ignorance & Want",role:"Allegorical figures",intro:"S3-07",color:"#582F0E"},
+  OLD_JOE:{name:"Old Joe",short:"Old Joe",role:"Fence (future vision)",intro:"S4-02",color:"#6C584C",badge:"vision"},
+  MRS_DILBER:{name:"Mrs. Dilber",short:"Mrs. Dilber",role:"Laundress (future vision)",intro:"S4-02",color:"#A98467",badge:"vision"},
+};
+
+const LOC_META = {
+  COUNTING:{name:"Scrooge & Marley's",icon:"🏢",intro:"S1-01",type:"office"},
+  CHAMBERS:{name:"Scrooge's Chambers",icon:"🚪",intro:"S1-03",type:"residence"},
+  STREETS:{name:"London Streets",icon:"🌫️",intro:"S1-03",type:"city"},
+  SCHOOL:{name:"Boyhood School",icon:"📚",intro:"S2-03",type:"vision"},
+  FEZZIWIG_W:{name:"Fezziwig's Warehouse",icon:"💃",intro:"S2-04",type:"vision"},
+  BELLE_ROOM:{name:"Belle's Room",icon:"💔",intro:"S2-06",type:"vision"},
+  BELLE_HOME:{name:"Belle's Family Home",icon:"🏡",intro:"S2-06",type:"vision"},
+  CRATCHIT:{name:"The Cratchit Home",icon:"🏠",intro:"S3-03",type:"house"},
+  BRITAIN:{name:"Across Britain",icon:"🏔️",intro:"S3-05",type:"montage"},
+  FRED_HOME:{name:"Fred's Home",icon:"🎄",intro:"S3-06",type:"house"},
+  DARK_LOC:{name:"A Dark Place",icon:"🌑",intro:"S3-07",type:"allegorical"},
+  EXCHANGE:{name:"The Exchange",icon:"📊",intro:"S4-01",type:"future vision"},
+  OLD_JOE_SHOP:{name:"Old Joe's Shop",icon:"🪤",intro:"S4-02",type:"future vision"},
+  FUTURE_ROOMS:{name:"The Dead Man's Room",icon:"⚰️",intro:"S4-03",type:"future vision"},
+  GRAVEYARD:{name:"The Churchyard",icon:"🪦",intro:"S4-05",type:"future vision"},
+};
+
+// ============================================================
+// STATE & HELPERS
+// ============================================================
+let position = 0, currentTab = "position", openChar = null, openLoc = null;
+
+const ci = (id) => CHUNKS.findIndex(c => c.id === id);
+const unlocked = (introId) => ci(introId) <= position;
+
+function getDesc(descs, pos) {
+  if (!descs) return "";
+  let r = descs[0];
+  for (const d of descs) { if (ci(d.from) <= pos) r = d; }
+  return r ? r.desc : "";
+}
+
+function countAppearances(field, id) {
+  return CHUNKS.filter((c, i) => i <= position && c[field].includes(id)).length;
+}
+
+function updateProgress() {
+  document.getElementById('progressFill').style.width = CHUNKS[position].pct + '%';
+  document.getElementById('progressPct').textContent = CHUNKS[position].pct + '%';
+}
+
+// ============================================================
+// POSITION TAB — scrolls to center current scene
+// ============================================================
+function renderPosition() {
+  const el = document.getElementById('panel-position');
+  let h = `<div class="section-head"><div class="section-title">Find Your Place</div><div class="section-subtitle">Tap scenes you've read. Stop at the last one you finished.</div></div><div class="scene-list">`;
+  CHUNKS.forEach((chunk, i) => {
+    const isRead = i <= position, isCurrent = i === position, isNext = i === position + 1, isFuture = i > position + 1;
+    const partChanged = i === 0 || chunk.part !== CHUNKS[i-1].part;
+    if (partChanged) h += `<div class="part-label ${isRead||isNext?'unlocked':'locked'}">${STAVES[chunk.part]}</div>`;
+    const cls = isCurrent ? 'current' : isFuture ? 'future' : isNext ? 'next-up' : '';
+    h += `<button class="scene-card ${cls}" ${isFuture?'disabled':''} data-idx="${i}" ${isCurrent?'id="currentScene"':''}>`;
+    h += `<div class="scene-card-head"><div class="check-circle ${isRead?'read':''}">${isRead?'✓':''}</div>`;
+    h += `<span class="scene-card-title">${chunk.title}</span></div>`;
+    if (isRead || isNext) h += `<div class="scene-card-micro">${chunk.micro}</div>`;
+    else if (isFuture) h += `<div class="scene-card-locked">Keep reading to unlock…</div>`;
+    h += `</button>`;
+  });
+  h += '</div>';
+  el.innerHTML = h;
+
+  // Scroll to center current scene
+  requestAnimationFrame(() => {
+    const cur = document.getElementById('currentScene');
+    if (cur) {
+      const container = document.getElementById('content');
+      const offset = cur.offsetTop - container.offsetTop - (container.clientHeight / 2) + (cur.clientHeight / 2);
+      container.scrollTop = Math.max(0, offset);
+    }
+  });
+
+  el.querySelectorAll('.scene-card:not([disabled])').forEach(btn => {
+    btn.addEventListener('click', () => {
+      position = parseInt(btn.dataset.idx);
+      openChar = null; openLoc = null;
+      updateProgress(); renderPosition();
+    });
+  });
+}
+
+// ============================================================
+// CHARACTERS — sorted by count, current-scene pinned, count bubbles
+// ============================================================
+function renderCharacters() {
+  const el = document.getElementById('panel-characters');
+  const entries = Object.entries(CHAR_META).filter(([,c]) => unlocked(c.intro));
+
+  // Sort: current-scene chars first, then by count descending
+  const currentChars = CHUNKS[position]?.chars || [];
+  entries.sort((a, b) => {
+    const aIn = currentChars.includes(a[0]) ? 1 : 0;
+    const bIn = currentChars.includes(b[0]) ? 1 : 0;
+    if (aIn !== bIn) return bIn - aIn;
+    return countAppearances("chars", b[0]) - countAppearances("chars", a[0]);
+  });
+
+  let h = `<div class="section-head"><div class="section-title">Characters</div><div class="section-subtitle">${entries.length} character${entries.length!==1?'s':''} met so far</div></div><div class="tracker-list">`;
+
+  entries.forEach(([id, char]) => {
+    const isOpen = openChar === id;
+    const inScene = currentChars.includes(id);
+    const count = countAppearances("chars", id);
+    const desc = getDesc(CHAR_DESCS[id], position);
+    const appearances = CHUNKS.filter((c,i) => i <= position && c.chars.includes(id));
+    const lastSeen = appearances.length ? appearances[appearances.length-1] : null;
+
+    h += `<button class="tracker-card ${isOpen?'open':''}" data-cid="${id}">`;
+    h += `<div class="count-bubble ${inScene?'active':'inactive'}">${count}</div>`;
+    h += `<div style="flex:1;min-width:0"><div style="display:flex;align-items:center;flex-wrap:wrap">`;
+    h += `<span class="card-name">${char.short}</span>`;
+    if (char.badge === 'spirit') h += `<span class="badge badge-spirit">spirit</span>`;
+    else if (char.badge === 'vision') h += `<span class="badge badge-vision">vision</span>`;
+    h += `</div><div class="card-role">${char.role}</div></div>`;
+    h += `<span class="chevron">›</span></button>`;
+
+    h += `<div class="card-detail ${isOpen?'open':''}" data-cid="${id}">`;
+    if (desc) h += `<p>${desc}</p>`;
+    if (lastSeen) h += `<div class="meta"><strong>Last seen:</strong> ${lastSeen.title}</div>`;
+    h += `</div>`;
+  });
+  h += '</div>';
+  el.innerHTML = h;
+
+  el.querySelectorAll('.tracker-card').forEach(btn => {
+    btn.addEventListener('click', () => { openChar = openChar === btn.dataset.cid ? null : btn.dataset.cid; renderCharacters(); });
+  });
+}
+
+// ============================================================
+// LOCATIONS — sorted by count, current-scene pinned, count bubbles
+// ============================================================
+function renderLocations() {
+  const el = document.getElementById('panel-locations');
+  const entries = Object.entries(LOC_META).filter(([,l]) => unlocked(l.intro));
+
+  const currentLocs = CHUNKS[position]?.locs || [];
+  entries.sort((a, b) => {
+    const aIn = currentLocs.includes(a[0]) ? 1 : 0;
+    const bIn = currentLocs.includes(b[0]) ? 1 : 0;
+    if (aIn !== bIn) return bIn - aIn;
+    return countAppearances("locs", b[0]) - countAppearances("locs", a[0]);
+  });
+
+  let h = `<div class="section-head"><div class="section-title">Locations</div><div class="section-subtitle">${entries.length} location${entries.length!==1?'s':''} visited so far</div></div><div class="tracker-list">`;
+
+  entries.forEach(([id, loc]) => {
+    const isOpen = openLoc === id;
+    const inScene = currentLocs.includes(id);
+    const count = countAppearances("locs", id);
+    const desc = getDesc(LOC_DESCS[id], position);
+
+    h += `<button class="tracker-card ${isOpen?'open':''}" data-lid="${id}">`;
+    h += `<div class="count-bubble ${inScene?'active':'inactive'}">${count}</div>`;
+    h += `<div style="flex:1;min-width:0"><div class="card-name">${loc.name}</div>`;
+    h += `<div class="card-role">${loc.type}</div></div>`;
+    h += `<span class="chevron">›</span></button>`;
+
+    const locAppearances = CHUNKS.filter((c,i) => i <= position && c.locs.includes(id));
+    const locLastSeen = locAppearances.length ? locAppearances[locAppearances.length-1] : null;
+
+    h += `<div class="card-detail ${isOpen?'open':''}" data-lid="${id}">`;
+    if (desc) h += `<p>${desc}</p>`;
+    if (locLastSeen) h += `<div class="meta"><strong>Last seen:</strong> ${locLastSeen.title}</div>`;
+    h += `</div>`;
+  });
+  h += '</div>';
+  el.innerHTML = h;
+
+  el.querySelectorAll('.tracker-card').forEach(btn => {
+    btn.addEventListener('click', () => { openLoc = openLoc === btn.dataset.lid ? null : btn.dataset.lid; renderLocations(); });
+  });
+}
+
+// ============================================================
+// RECAP
+// ============================================================
+function renderRecap() {
+  const el = document.getElementById('panel-recap');
+  const read = CHUNKS.filter((_,i) => i <= position);
+  let h = `<div class="section-head"><div class="section-title">Story So Far</div><div class="section-subtitle">${position+1} of ${CHUNKS.length} scenes read — ${CHUNKS[position].pct}% through</div></div>`;
+  h += '<div class="recap-timeline"><div class="timeline-line"></div>';
+  read.forEach((chunk, i) => {
+    const partChanged = i === 0 || chunk.part !== CHUNKS[i>0?i-1:0].part;
+    if (partChanged) h += `<div class="recap-part-label">${STAVES[chunk.part]}</div>`;
+    h += `<div class="recap-item"><div class="recap-dot ${i===position?'current':''}"></div>`;
+    h += `<div class="recap-ch-title">${chunk.title}</div>`;
+    h += `<div class="recap-micro">${chunk.micro}</div></div>`;
+  });
+  h += '</div>';
+  el.innerHTML = h;
+}
+
+// ============================================================
+// TABS & BOOT
+// ============================================================
+const TABS = [{id:"position",icon:"📖",label:"Position"},{id:"characters",icon:"👤",label:"Characters"},{id:"locations",icon:"🗺️",label:"Locations"},{id:"recap",icon:"📜",label:"Recap"}];
+
+function renderTabs() {
+  const bar = document.getElementById('tabBar');
+  bar.innerHTML = TABS.map(t =>
+    `<button class="tab-btn ${t.id===currentTab?'active':'inactive'}" data-tab="${t.id}"><span class="tab-icon">${t.icon}</span><span class="tab-label">${t.label}</span></button>`
+  ).join('');
+  bar.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentTab = btn.dataset.tab;
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('panel-' + currentTab).classList.add('active');
+      renderTabs(); renderAll();
+    });
+  });
+}
+
+function renderAll() {
+  updateProgress();
+  if (currentTab === 'position') renderPosition();
+  else if (currentTab === 'characters') renderCharacters();
+  else if (currentTab === 'locations') renderLocations();
+  else if (currentTab === 'recap') renderRecap();
+}
+
+renderTabs(); renderAll();
+</script>
+</body>
+</html>

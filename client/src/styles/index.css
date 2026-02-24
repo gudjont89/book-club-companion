@@ -1,0 +1,240 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; }
+body {
+  font-family: 'Source Serif 4', Georgia, serif;
+  color: #1A1A2E;
+  background: #FAFBFD;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Layout ── */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  max-width: 420px;
+  margin: 0 auto;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Header ── */
+.header {
+  padding: 16px 24px 14px;
+  background: linear-gradient(180deg, var(--color-header-bg) 0%, var(--color-header-gradient-end) 100%);
+  color: #E8E8F0;
+  flex-shrink: 0;
+}
+.header-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.header-author { font-size: 13px; color: #A0A0C0; margin-top: 2px; }
+.progress-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+.progress-track { flex: 1; height: 4px; background: #2A2A4A; border-radius: 2px; overflow: hidden; }
+.progress-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+  transition: width 0.4s ease;
+}
+.progress-pct { font-size: 12px; color: #A0A0C0; font-weight: 500; min-width: 32px; text-align: right; }
+
+/* ── Tab Bar ── */
+.tab-bar {
+  display: flex;
+  border-top: 1px solid #E0E0EC;
+  background: var(--color-background, #FAFBFD);
+  flex-shrink: 0;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+.tab-btn {
+  flex: 1; padding: 10px 0 8px; border: none; background: transparent;
+  cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  -webkit-tap-highlight-color: transparent; outline: none;
+}
+.tab-icon { font-size: 20px; transition: opacity 0.2s; }
+.tab-btn.inactive .tab-icon { opacity: 0.4; }
+.tab-label { font-size: 10px; font-weight: 600; transition: color 0.2s; }
+.tab-btn.active .tab-label { color: var(--color-accent); }
+.tab-btn.inactive .tab-label { color: var(--color-tab-inactive, #B0B0C8); }
+
+/* ── Section Headers ── */
+.section-head { padding: 20px 24px 4px; }
+.section-title { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; font-weight: 700; color: #1A1A2E; }
+.section-subtitle { font-size: 13px; color: #6B6B8D; margin-top: 2px; margin-bottom: 12px; }
+
+/* ── Position Panel ── */
+.position-panel .section-head { border-bottom: 1px solid #E0E0EC; padding-bottom: 12px; }
+.scene-list { padding: 8px 16px 16px; }
+.part-label {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; padding: 16px 4px 6px;
+}
+.part-label.unlocked { color: var(--color-accent); }
+.part-label.locked { color: #C0C0D8; }
+
+.scene-card {
+  display: block; width: 100%; text-align: left;
+  border: 1px solid transparent; border-radius: 10px;
+  padding: 12px 14px; margin-bottom: 4px; cursor: pointer;
+  background: #FDFCFE; transition: all 0.15s;
+  -webkit-tap-highlight-color: transparent; outline: none;
+}
+.scene-card:active { transform: scale(0.98); }
+.scene-card.current { border: 2px solid var(--color-accent); background: var(--color-card-bg); }
+.scene-card.future { opacity: 0.4; cursor: default; background: #F0F0F6; }
+.scene-card.future:active { transform: none; }
+.scene-card-head { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+
+.check-circle {
+  width: 20px; height: 20px; border-radius: 50%;
+  border: 2px solid #C8C0DC; display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: #fff; flex-shrink: 0; transition: all 0.2s;
+}
+.check-circle.read { background: var(--color-accent); border-color: var(--color-accent); }
+
+.scene-card-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 14px; font-weight: 600; color: #1A1A2E;
+}
+.scene-card.future .scene-card-title { color: #A0A0B8; }
+.scene-card-micro { font-size: 13px; line-height: 1.45; color: #4A4A6A; padding-left: 28px; }
+.scene-card.next-up .scene-card-micro { color: #7B7B9A; }
+.scene-card-locked { font-size: 12px; color: #B0B0C8; padding-left: 28px; font-style: italic; }
+
+/* ── Tracker Cards (Characters & Locations) ── */
+.tracker-list { padding: 0 24px 24px; }
+.tracker-card {
+  width: 100%; text-align: left; display: flex; align-items: center; gap: 12px;
+  background: transparent; border: 1px solid transparent; border-radius: 10px;
+  padding: 10px 14px; cursor: pointer; transition: all 0.15s;
+  -webkit-tap-highlight-color: transparent; margin-bottom: 2px; outline: none;
+}
+.tracker-card:active { transform: scale(0.98); }
+.tracker-card.open { background: var(--color-card-bg); border-color: var(--color-card-border); }
+
+.count-bubble {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 15px; font-weight: 600;
+  flex-shrink: 0; transition: all 0.2s;
+}
+.count-bubble.active { background: var(--color-accent); color: #fff; }
+.count-bubble.inactive { background: #fff; color: var(--color-accent); border: 2px solid var(--color-card-border); }
+
+.card-name { font-family: 'Playfair Display', Georgia, serif; font-size: 15px; font-weight: 600; color: #1A1A2E; }
+.card-role { font-size: 12px; color: #6B6B8D; margin-top: 1px; }
+.badge { font-size: 11px; padding: 1px 7px; border-radius: 20px; margin-left: 6px; white-space: nowrap; }
+.badge-spirit { color: var(--color-accent); background: var(--color-card-bg); }
+.badge-vision { color: #8B7355; background: #F5F0E8; }
+.chevron { font-size: 18px; color: #B0B0C8; transition: transform 0.2s; margin-left: auto; }
+.tracker-card.open .chevron { transform: rotate(90deg); }
+
+.card-detail {
+  padding: 12px 14px 14px 62px; background: var(--color-card-bg);
+  border-radius: 0 0 10px 10px; font-size: 13px; line-height: 1.5; color: #4A4A6A;
+  margin-bottom: 4px; display: none;
+}
+.card-detail.open { display: block; }
+.card-detail p { margin: 0 0 6px; }
+.card-detail .meta { font-size: 12px; color: #6B6B8D; margin-top: 2px; }
+.card-detail .meta strong { font-weight: 600; }
+
+/* ── Recap ── */
+.recap-timeline { padding: 0 24px 24px; position: relative; padding-left: 44px; }
+.timeline-line { position: absolute; left: 30px; top: 0; bottom: 0; width: 2px; background: #E0E0EC; }
+.recap-part-label {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--color-accent); padding: 12px 0 6px;
+}
+.recap-item { position: relative; margin-bottom: 12px; }
+.recap-dot {
+  position: absolute; left: -22px; top: 6px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #D0C8E0; border: 2px solid #FAFBFD;
+}
+.recap-dot.current { background: var(--color-accent); }
+.recap-ch-title { font-family: 'Playfair Display', Georgia, serif; font-size: 13px; font-weight: 600; color: #1A1A2E; margin-bottom: 2px; }
+.recap-micro { font-size: 13px; line-height: 1.45; color: #4A4A6A; }
+
+/* ── Home Page ── */
+.home-page {
+  min-height: 100vh;
+  background: #FAFBFD;
+  padding: 48px 24px;
+}
+.home-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.home-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1A1A2E;
+}
+.home-subtitle {
+  font-size: 15px;
+  color: #6B6B8D;
+  margin-top: 8px;
+}
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.book-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #E0E0EC;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.book-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.book-card-accent {
+  height: 6px;
+}
+.book-card-body {
+  padding: 20px;
+}
+.book-card-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1A1A2E;
+}
+.book-card-author {
+  font-size: 14px;
+  color: #6B6B8D;
+  margin-top: 4px;
+}
+
+/* ── Loading / Error ── */
+.loading, .error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 16px;
+  color: #6B6B8D;
+}
+.error { color: #D62828; }

@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "COUNTING": {"name":"Scrooge & Marley's","icon":"🏢","intro":"S1-01","type":"office"},
+    "CHAMBERS": {"name":"Scrooge's Chambers","icon":"🚪","intro":"S1-03","type":"residence"},
+    "STREETS": {"name":"London Streets","icon":"🌫️","intro":"S1-03","type":"city"},
+    "SCHOOL": {"name":"Boyhood School","icon":"📚","intro":"S2-03","type":"vision"},
+    "FEZZIWIG_W": {"name":"Fezziwig's Warehouse","icon":"💃","intro":"S2-04","type":"vision"},
+    "BELLE_ROOM": {"name":"Belle's Room","icon":"💔","intro":"S2-06","type":"vision"},
+    "BELLE_HOME": {"name":"Belle's Family Home","icon":"🏡","intro":"S2-06","type":"vision"},
+    "CRATCHIT": {"name":"The Cratchit Home","icon":"🏠","intro":"S3-03","type":"house"},
+    "BRITAIN": {"name":"Across Britain","icon":"🏔️","intro":"S3-05","type":"montage"},
+    "FRED_HOME": {"name":"Fred's Home","icon":"🎄","intro":"S3-06","type":"house"},
+    "DARK_LOC": {"name":"A Dark Place","icon":"🌑","intro":"S3-07","type":"allegorical"},
+    "EXCHANGE": {"name":"The Exchange","icon":"📊","intro":"S4-01","type":"future vision"},
+    "OLD_JOE_SHOP": {"name":"Old Joe's Shop","icon":"🪤","intro":"S4-02","type":"future vision"},
+    "FUTURE_ROOMS": {"name":"The Dead Man's Room","icon":"⚰️","intro":"S4-03","type":"future vision"},
+    "GRAVEYARD": {"name":"The Churchyard","icon":"🪦","intro":"S4-05","type":"future vision"}
+  },
+  "descriptions": {
+    "COUNTING": [
+      {"from":"S1-01","desc":"Scrooge & Marley's counting-house. A gloomy office in the City of London. Bob shivers with a tiny fire; Scrooge keeps the coal box."},
+      {"from":"S5-02","desc":"Scrooge & Marley's counting-house. Once gloomy and freezing. Now the place where Scrooge raised Bob's salary and promised to help his family."}
+    ],
+    "CHAMBERS": [
+      {"from":"S1-03","desc":"Scrooge's rooms in a dark building that was once a warehouse. Cold, cheap, cheerless."},
+      {"from":"S1-06","desc":"Scrooge's gloomy rooms. Marley's face appeared in the door-knocker. His ghost passed through the locked door and delivered a warning."},
+      {"from":"S3-01","desc":"Scrooge's rooms. Once gloomy, now transformed into a Christmas feast by the Ghost of Christmas Present."},
+      {"from":"S5-01","desc":"Scrooge's rooms. Scene of Marley's warning, three spirit visits, and finally Scrooge's joyful awakening on Christmas morning."}
+    ],
+    "STREETS": [
+      {"from":"S1-03","desc":"London streets. Dark, foggy, cold on Christmas Eve."},
+      {"from":"S3-02","desc":"London streets. Dark on Christmas Eve, joyful on Christmas morning — people going to church and bakers' shops."},
+      {"from":"S5-02","desc":"London streets. Once dark and unwelcoming. Now the place where Scrooge greets everyone with 'Merry Christmas!'"}
+    ],
+    "SCHOOL": [{"from":"S2-03","desc":"A country school from Scrooge's boyhood. Cold and empty during the Christmas holidays. Young Scrooge reads alone."}],
+    "FEZZIWIG_W": [{"from":"S2-04","desc":"Old Fezziwig's warehouse, transformed for the Christmas Eve ball. Warm, bright, full of music and dancing."}],
+    "BELLE_ROOM": [{"from":"S2-06","desc":"The room where Belle released Scrooge from their engagement. She saw that money had displaced her in his heart."}],
+    "BELLE_HOME": [{"from":"S2-06","desc":"Belle's family home years later. Warm, happy, full of children."}],
+    "CRATCHIT": [
+      {"from":"S3-03","desc":"The Cratchit home. A modest four-room house, small but full of warmth, love, and the smell of goose."},
+      {"from":"S4-04","desc":"The Cratchit home. Once full of warmth and goose. In the future vision, the family mourns. Tiny Tim's chair is empty."},
+      {"from":"S5-02","desc":"The Cratchit home. Modest but warm. Scrooge sent an enormous turkey here anonymously on Christmas Day."}
+    ],
+    "BRITAIN": [{"from":"S3-05","desc":"A tour across Britain — miners on a moor, lighthouse keepers at sea, sailors on a ship. Christmas reaches everywhere."}],
+    "FRED_HOME": [
+      {"from":"S3-06","desc":"Fred's warm, lively home. A Christmas party full of laughter and games."},
+      {"from":"S5-02","desc":"Fred's home. Where Scrooge finally arrived in person and was welcomed with joy."}
+    ],
+    "DARK_LOC": [{"from":"S3-07","desc":"A dark, unspecified place where Ignorance and Want were revealed, and the third phantom first appeared."}],
+    "EXCHANGE": [{"from":"S4-01","desc":"London's business exchange. Businessmen discussed someone's death with callous indifference."}],
+    "OLD_JOE_SHOP": [{"from":"S4-02","desc":"A filthy junk shop. Three thieves brought stolen goods from a dead man's house to Old Joe the fence."}],
+    "FUTURE_ROOMS": [{"from":"S4-03","desc":"A bare, dark room with a covered body on a bed. The curtains and blankets stolen. Scrooge could not lift the sheet."}],
+    "GRAVEYARD": [{"from":"S4-05","desc":"A neglected churchyard. Scrooge's own gravestone — the final revelation of the third spirit."}]
+  }
+}

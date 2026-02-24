@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "SCROOGE": {"name":"Ebenezer Scrooge","short":"Scrooge","role":"Protagonist","intro":"S1-01","color":"#3D405B"},
+    "MARLEY": {"name":"Jacob Marley","short":"Marley's Ghost","role":"The warning","intro":"S1-05","color":"#6C757D"},
+    "BOB": {"name":"Bob Cratchit","short":"Bob Cratchit","role":"Scrooge's clerk","intro":"S1-01","color":"#2D6A4F"},
+    "TINY_TIM": {"name":"Tiny Tim","short":"Tiny Tim","role":"Emotional heart of the story","intro":"S3-03","color":"#48BFE3"},
+    "MRS_CRATCHIT": {"name":"Mrs. Cratchit","short":"Mrs. Cratchit","role":"Bob's wife","intro":"S3-03","color":"#7B2D8E"},
+    "MARTHA": {"name":"Martha Cratchit","short":"Martha","role":"Eldest Cratchit daughter","intro":"S3-03","color":"#C77DFF"},
+    "PETER": {"name":"Peter Cratchit","short":"Peter","role":"A Cratchit son","intro":"S3-03","color":"#9D4EDD"},
+    "BELINDA": {"name":"Belinda Cratchit","short":"Belinda","role":"Second Cratchit daughter","intro":"S3-03","color":"#E0AAFF"},
+    "FRED": {"name":"Fred","short":"Fred","role":"Scrooge's nephew","intro":"S1-02","color":"#D62828"},
+    "FRED_WIFE": {"name":"Fred's Wife","short":"Fred's wife","role":"Fred's wife","intro":"S3-06","color":"#F77F00"},
+    "FAN": {"name":"Fan","short":"Fan","role":"Scrooge's sister (vision)","intro":"S2-04","color":"#FCBF49","badge":"vision"},
+    "FEZZIWIG": {"name":"Mr. Fezziwig","short":"Fezziwig","role":"Scrooge's former master (vision)","intro":"S2-04","color":"#EAE2B7","badge":"vision"},
+    "MRS_FEZZIWIG": {"name":"Mrs. Fezziwig","short":"Mrs. Fezziwig","role":"Fezziwig's wife (vision)","intro":"S2-05","color":"#D4A373","badge":"vision"},
+    "DICK": {"name":"Dick Wilkins","short":"Dick Wilkins","role":"Fellow apprentice (vision)","intro":"S2-04","color":"#CCD5AE","badge":"vision"},
+    "BELLE": {"name":"Belle","short":"Belle","role":"Scrooge's former fiancée (vision)","intro":"S2-06","color":"#E07A5F","badge":"vision"},
+    "BELLE_HUSBAND": {"name":"Belle's Husband","short":"Belle's husband","role":"Belle's husband (vision)","intro":"S2-06","color":"#81B29A","badge":"vision"},
+    "YOUNG_SCROOGE": {"name":"Young Scrooge","short":"Young Scrooge","role":"Scrooge in the past (vision)","intro":"S2-03","color":"#8D99AE","badge":"vision"},
+    "GHOST_PAST": {"name":"Ghost of Christmas Past","short":"Christmas Past","role":"First spirit","intro":"S2-02","color":"#FFD166","badge":"spirit"},
+    "GHOST_PRESENT": {"name":"Ghost of Christmas Present","short":"Christmas Present","role":"Second spirit","intro":"S3-01","color":"#06D6A0","badge":"spirit"},
+    "GHOST_FUTURE": {"name":"Ghost of Christmas Yet to Come","short":"Christmas Future","role":"Third spirit","intro":"S4-01","color":"#1D1D1D","badge":"spirit"},
+    "CHARITY": {"name":"Charity Collectors","short":"Charity collectors","role":"Collectors for the poor","intro":"S1-02","color":"#588157"},
+    "IGN_WANT": {"name":"Ignorance & Want","short":"Ignorance & Want","role":"Allegorical figures","intro":"S3-07","color":"#582F0E"},
+    "OLD_JOE": {"name":"Old Joe","short":"Old Joe","role":"Fence (future vision)","intro":"S4-02","color":"#6C584C","badge":"vision"},
+    "MRS_DILBER": {"name":"Mrs. Dilber","short":"Mrs. Dilber","role":"Laundress (future vision)","intro":"S4-02","color":"#A98467","badge":"vision"}
+  },
+  "descriptions": {
+    "SCROOGE": [
+      {"from":"S1-01","desc":"An old miser. Cold, solitary, universally disliked. Partner in Scrooge and Marley."},
+      {"from":"S1-06","desc":"An old miser warned by Marley's ghost that three spirits will visit — his only chance to escape an eternity in chains."},
+      {"from":"S2-06","desc":"An old miser who was once a lonely, neglected boy, then a happy apprentice, then a young man who lost the woman he loved to greed."},
+      {"from":"S3-04","desc":"A miser beginning to see the cost of his ways. Once a lonely boy, a happy apprentice, a man who lost love to greed. Now confronted with the poverty of his clerk's family — told a child may die because of men like him."},
+      {"from":"S4-05","desc":"A miser who has seen the full arc: lonely boy, lost love, a dying child, an unmourned death, and his own neglected grave. Has vowed to change."},
+      {"from":"S5-02","desc":"Once a cold miser, now transformed. Generous, joyful. Was a lonely boy, a happy apprentice, lost love to greed, saw the darkest future — and chose differently."}
+    ],
+    "MARLEY": [
+      {"from":"S1-01","desc":"Scrooge's deceased business partner. Dead seven years."},
+      {"from":"S1-06","desc":"Scrooge's dead partner. Appeared as a ghost bound in chains forged by a lifetime of greed. Warned Scrooge of three spirits — his only chance."}
+    ],
+    "BOB": [
+      {"from":"S1-01","desc":"Scrooge's clerk. Poorly paid, works in freezing conditions."},
+      {"from":"S3-03","desc":"Scrooge's underpaid clerk. A devoted father who carries his disabled son on his shoulder. Makes the best of very little."},
+      {"from":"S3-04","desc":"Scrooge's underpaid clerk. Devoted father to Tiny Tim. Loyal enough to toast Scrooge even on Christmas Day. The spirit has warned that Tim may die."},
+      {"from":"S4-04","desc":"Scrooge's clerk. A devoted father. In a future vision, Tiny Tim has died and the family mourns."},
+      {"from":"S5-02","desc":"Scrooge's clerk, now with a raised salary and a promise of help. A devoted father whose loyalty was finally repaid."}
+    ],
+    "TINY_TIM": [
+      {"from":"S3-03","desc":"Bob's youngest son. Small, disabled, walks with a crutch. Sweet and brave."},
+      {"from":"S3-04","desc":"Bob's youngest son. Disabled, walks with a crutch. The spirit has warned he will die unless things change."},
+      {"from":"S4-04","desc":"Bob's youngest son. Disabled. The spirit warned he would die — and in the future vision, he has."},
+      {"from":"S5-02","desc":"Bob's youngest son. Alive and well — the dark future averted. Scrooge has become a second father to him."}
+    ],
+    "MRS_CRATCHIT": [
+      {"from":"S3-03","desc":"Bob's wife. Resourceful and proud. Creates a festive Christmas from almost nothing."},
+      {"from":"S3-04","desc":"Bob's wife. Resourceful, proud, openly resentful of Scrooge for how little he pays Bob."},
+      {"from":"S4-04","desc":"Bob's wife. Resourceful and proud. Resentful of Scrooge. In the future vision, mourning Tiny Tim."}
+    ],
+    "FRED": [
+      {"from":"S1-02","desc":"Scrooge's nephew. Son of Scrooge's late sister Fan. Warm, cheerful, refuses to give up on his uncle."},
+      {"from":"S3-06","desc":"Scrooge's nephew. Son of Fan. Warm and persistent — defends Scrooge even when his guests mock the old man."},
+      {"from":"S5-02","desc":"Scrooge's nephew. Warm and persistent. Son of Fan. Finally rewarded when Scrooge arrives at his party."}
+    ],
+    "FRED_WIFE": [{"from":"S3-06","desc":"Fred's wife. Pretty, with a dimpled face. Good-humoured."}],
+    "GHOST_PAST": [
+      {"from":"S2-02","desc":"The first spirit. Both child and elder. Wears white, emits light from its head. Shows visions of the past."},
+      {"from":"S2-06","desc":"The first spirit. Showed Scrooge his lonely boyhood, Fezziwig's warmth, and Belle's departure. Extinguished by Scrooge."}
+    ],
+    "GHOST_PRESENT": [
+      {"from":"S3-01","desc":"The second spirit. A giant in a green robe with a holly wreath. Jolly, generous. Shows the world as it is now."},
+      {"from":"S3-07","desc":"The second spirit. Showed the Cratchits, Fred's party, and Christmas across Britain. Aged in a single night. Hid Ignorance and Want beneath its robe."}
+    ],
+    "GHOST_FUTURE": [
+      {"from":"S4-01","desc":"The third spirit. A silent black phantom. Communicates only by pointing. Shows the future."},
+      {"from":"S4-05","desc":"The third spirit. Showed an unmourned death, thieves, Tiny Tim's death, and Scrooge's own neglected grave."}
+    ],
+    "CHARITY": [
+      {"from":"S1-02","desc":"Two gentlemen collecting for the poor at Christmas. Scrooge turned them away."},
+      {"from":"S5-02","desc":"Collectors for the poor. Scrooge turned them away on Christmas Eve, then gave an enormous donation on Christmas Day."}
+    ],
+    "FAN": [{"from":"S2-04","desc":"Scrooge's younger sister. Small and loving. Rescued him from the lonely school. Died young — Fred is her son."}],
+    "FEZZIWIG": [{"from":"S2-04","desc":"Scrooge's old employer. Jolly, generous. Hosted a magnificent Christmas ball. A model of what a good master looks like."}],
+    "MRS_FEZZIWIG": [{"from":"S2-05","desc":"Fezziwig's wife. Broad, beaming, dances energetically."}],
+    "DICK": [{"from":"S2-04","desc":"Scrooge's fellow apprentice at Fezziwig's. Scrooge was fond of him."}],
+    "BELLE": [{"from":"S2-06","desc":"Scrooge's former fiancée. Broke off the engagement when greed displaced her. Later seen happily married with children."}],
+    "BELLE_HUSBAND": [{"from":"S2-06","desc":"Belle's husband. Mentioned seeing old Scrooge alone at his desk while Marley lay dying."}],
+    "YOUNG_SCROOGE": [
+      {"from":"S2-03","desc":"Scrooge as a boy. Left alone at school during Christmas. Finds comfort in storybooks."},
+      {"from":"S2-04","desc":"Scrooge from boy to apprentice. Lonely child, then eager and full of life at Fezziwig's."},
+      {"from":"S2-06","desc":"Scrooge from boyhood to young manhood. Lonely child, happy apprentice, then a man whose heart turned to gold. Belle saw the change before he did."}
+    ],
+    "MARTHA": [{"from":"S3-03","desc":"Eldest Cratchit daughter. Works at a milliner's. Arrives late for Christmas dinner."}],
+    "PETER": [
+      {"from":"S3-03","desc":"A Cratchit son. Wears Bob's enormous hand-me-down shirt collar with pride."},
+      {"from":"S4-04","desc":"A Cratchit son. In the future vision, reads to the family as they mourn Tiny Tim."}
+    ],
+    "BELINDA": [{"from":"S3-03","desc":"Second Cratchit daughter. Helps with the Christmas dinner."}],
+    "IGN_WANT": [{"from":"S3-07","desc":"Two starving children beneath the Spirit's robe. The boy is Ignorance; the girl is Want. 'Beware them both.'"}],
+    "OLD_JOE": [{"from":"S4-02","desc":"A disreputable fence. Buys stolen goods from a dead man's household."}],
+    "MRS_DILBER": [{"from":"S4-02","desc":"A laundress who stole from the dead man's room."}]
+  }
+}

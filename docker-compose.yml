@@ -1,0 +1,25 @@
+services:
+  server:
+    build: ./server
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./data:/app/data
+      - ./server/src:/app/src
+    environment:
+      - NODE_ENV=development
+      - DATA_DIR=/app/data
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./client/src:/app/src
+      - ./client/index.html:/app/index.html
+    depends_on:
+      - server
+    environment:
+      - VITE_API_URL=http://server:3001

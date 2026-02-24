@@ -1,0 +1,22 @@
+node_modules/
+dist/
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Epub files (copyrighted content)
+books/*/epub/*.epub
+books/*/epub/book_extracted/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.local

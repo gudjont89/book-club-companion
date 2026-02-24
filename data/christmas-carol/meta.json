@@ -1,0 +1,24 @@
+{
+  "slug": "christmas-carol",
+  "title": "A Christmas Carol",
+  "author": "Charles Dickens",
+  "sections": [
+    "Stave I — Marley's Ghost",
+    "Stave II — The First of the Three Spirits",
+    "Stave III — The Second of the Three Spirits",
+    "Stave IV — The Last of the Spirits",
+    "Stave V — The End of It"
+  ],
+  "theme": {
+    "headerBg": "#1A1A2E",
+    "headerGradientEnd": "#16213E",
+    "accent": "#7B68AE",
+    "accentLight": "#C4A7E7",
+    "text": "#1A1A2E",
+    "textSecondary": "#6B6B8D",
+    "cardBg": "#F5F3FA",
+    "cardBorder": "#D8D0E8",
+    "background": "#FAFBFD",
+    "tabInactive": "#B0B0C8"
+  }
+}
