@@ -91,6 +91,6 @@ After applying fixes:
 
 ## After This Stage
 
-Run validation: `python tools/validate.py <book-slug>`
+Run validation: `docker compose run --rm tools validate.py <book-slug>`
 
 If validation fails, fix the issue and re-validate. The data should be clean after this stage.

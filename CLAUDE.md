@@ -27,7 +27,7 @@ To generate data for a new book, use the agent prompts in `.claude/prompts/`. Ea
 
 **1. Extract chapters** (if starting from epub):
 ```bash
-python tools/extract.py path/to/book.epub --output data/<book-slug>
+docker compose run --rm tools extract.py /repo/path/to/book.epub --output /app/data/<book-slug>
 ```
 
 **2. Stage 1 — Annotate** (`.claude/prompts/stage1-annotate.md`):
@@ -39,7 +39,7 @@ This creates: `meta.json`, `chunks.json`, `characters.json`, `locations.json`, `
 
 **3. Validate structure**:
 ```bash
-python tools/validate.py <book-slug>
+docker compose run --rm tools validate.py <book-slug>
 ```
 
 **4. Stage 3a — Coverage check** (`.claude/prompts/stage3a-coverage.md`):
@@ -64,7 +64,7 @@ Automatically apply fixes from both review outputs. Spoiler fixes take priority 
 
 **8. Re-validate** after fixes:
 ```bash
-python tools/validate.py <book-slug>
+docker compose run --rm tools validate.py <book-slug>
 ```
 
 ### Data File Formats

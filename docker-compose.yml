@@ -23,3 +23,11 @@ services:
       - server
     environment:
       - VITE_API_URL=http://server:3001
+
+  tools:
+    build: ./tools
+    profiles: ["tools"]
+    volumes:
+      - ./data:/app/data
+      - ./tools:/app
+      - .:/repo

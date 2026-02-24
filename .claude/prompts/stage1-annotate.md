@@ -173,7 +173,7 @@ Write these for an agent, not a reader. Be exhaustive.
 6. Run the self-checks below
 7. Write files to `data/<book-slug>/`
 
-After writing, run: `python tools/validate.py <book-slug>`
+After writing, run: `docker compose run --rm tools validate.py <book-slug>`
 
 ## Self-Checks (run before writing files)
 
