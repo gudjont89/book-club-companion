@@ -54,9 +54,15 @@ Compare summaries against the source text. Fix any gaps before proceeding.
 @.claude/prompts/stage3b-continuity.md — Check continuity for data/<book-slug>/
 ```
 
-**6. Human review** — Review flagged issues, apply fixes.
+**6. Stage 4 — Auto-fix** (`.claude/prompts/stage4-fix.md`):
+Automatically apply fixes from both review outputs. Spoiler fixes take priority over continuity fixes when they conflict.
+```
+@.claude/prompts/stage4-fix.md — Fix data/<book-slug>/ using review results
+```
 
-**7. Re-validate** after fixes:
+**7. Human review** — Review the fix log and spot-check changes.
+
+**8. Re-validate** after fixes:
 ```bash
 python tools/validate.py <book-slug>
 ```
