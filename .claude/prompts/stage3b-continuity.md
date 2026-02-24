@@ -34,16 +34,25 @@ Same check for locations:
 - Does every location ID used in any chunk's `locs` array exist in `locations.json` meta?
 - Does every `intro` value in character/location meta reference a valid chunk ID?
 - Does every `from` value in character/location descriptions reference a valid chunk ID?
+- Does every `established` value in description `facts` arrays reference a valid chunk ID?
+- Is every `established` value at or before the description entry's `from` value?
 
 ### 4. Description Continuity
 
-For characters with multiple description entries, check that each LATER entry preserves information from EARLIER entries (cumulative knowledge principle).
+For characters with multiple description entries, check that each LATER entry preserves ALL facts from EARLIER entries (cumulative knowledge principle).
 
-Example of a continuity error:
-- At S1-01: "Partner in Scrooge and Marley."
-- At S2-06: "An old miser who lost love to greed." (MISSING: the partnership fact should carry through)
+**This check is now mechanical using the `facts` arrays.** For each entity with 2+ description entries:
+1. Take the `facts` array from entry N
+2. Take the `facts` array from entry N+1
+3. Every fact in entry N must have a matching `fact` string in entry N+1 (with the same `established` value)
+4. If a fact from entry N is missing in entry N+1, that's a `description_regression`
 
-Check EVERY character and location with 2+ description entries.
+Example of a continuity error detected by fact diff:
+- Entry at S1-01 facts: `[{"fact": "Partner in Scrooge and Marley", "established": "S1-01"}]`
+- Entry at S2-06 facts: `[{"fact": "An old miser who lost love to greed", "established": "S2-06"}]`
+- MISSING: the "Partner in Scrooge and Marley" fact was dropped.
+
+Also verify that `desc` is consistent with its `facts` array — every fact should be reflected in the description text.
 
 ### 5. Completeness
 

@@ -224,8 +224,23 @@ An ordered array of scene objects:
   },
   "descriptions": {
     "CHARACTER_ID": [
-      { "from": "CH01-01", "desc": "Cumulative knowledge description." },
-      { "from": "CH05-01", "desc": "Updated cumulative knowledge after a reveal." }
+      {
+        "from": "CH01-01",
+        "desc": "Scrooge's clerk. Poorly paid, works in freezing conditions.",
+        "facts": [
+          { "fact": "Scrooge's clerk", "established": "S1-01" },
+          { "fact": "Poorly paid, works in freezing conditions", "established": "S1-01" }
+        ]
+      },
+      {
+        "from": "S2-03",
+        "desc": "Scrooge's clerk. Poorly paid, works in freezing conditions. Devoted father of six children.",
+        "facts": [
+          { "fact": "Scrooge's clerk", "established": "S1-01" },
+          { "fact": "Poorly paid, works in freezing conditions", "established": "S1-01" },
+          { "fact": "Devoted father of six children", "established": "S2-03" }
+        ]
+      }
     ]
   }
 }
@@ -242,11 +257,24 @@ An ordered array of scene objects:
 - Most minor characters need only 1 description. Major characters: 4-8 entries.
 - Each later description MUST preserve key facts from earlier descriptions. Do not drop defining traits when adding new information. Re-read the previous description before writing the next one.
 
+**Description structure:** Each description entry has three fields:
+- `from`: The scene ID where this description activates.
+- `desc`: The rendered description string displayed to readers. This is the human-readable cumulative summary.
+- `facts`: An array of discrete facts that compose the description. Each fact has:
+  - `fact`: A short factual claim (one sentence or phrase).
+  - `established`: The scene ID where this fact was first learned by the reader.
+
+**Rules for `facts`:**
+- Every claim in `desc` must correspond to a fact in `facts`. The `desc` is the prose rendering of the facts array.
+- `established` must be at or before `from`. A fact cannot reference a scene the reader hasn't reached.
+- When writing a new description entry, carry forward ALL facts from the previous entry and add new ones. This makes continuity mechanical — the review stages can diff fact arrays.
+- Minor characters with 1 description may have 1-3 facts. Major characters will accumulate more.
+
 **Badge:** Optional. Use for special categories (e.g., "spirit", "vision", "flashback", "deceased").
 
 ### locations.json
 
-Same structure as characters:
+Same structure as characters (including fact-tagged descriptions):
 
 ```json
 {
@@ -260,7 +288,14 @@ Same structure as characters:
   },
   "descriptions": {
     "LOCATION_ID": [
-      { "from": "CH01-01", "desc": "Cumulative knowledge description." }
+      {
+        "from": "CH01-01",
+        "desc": "Scrooge's cold, dimly lit counting-house.",
+        "facts": [
+          { "fact": "Scrooge's counting-house", "established": "S1-01" },
+          { "fact": "Cold and dimly lit", "established": "S1-01" }
+        ]
+      }
     ]
   }
 }
@@ -313,11 +348,10 @@ For each character/location in a scene's `chars`/`locs` array, verify the entity
 **Example error:** A mysterious figure leaves a hut in scene 10. The reader learns in scene 15 that it was CHARACTER_X. Do NOT put CHARACTER_X in scene 10's `chars`. Do NOT mention CHARACTER_X in scene 10's location description.
 
 ### Check B: No future knowledge in descriptions
-For each description entry with `"from": "SCENE_ID"`, verify every claim is supported ONLY by events in scenes up to and including SCENE_ID. You have full book knowledge at finalize time — this is where leaks happen. Watch for:
-- Naming someone before the reader learns their name
-- Describing combat behaviour before the fight scene
-- Referencing characters who haven't been introduced yet
-- Using terminology the reader hasn't encountered yet
+For each description entry with `"from": "SCENE_ID"`:
+- Verify every fact's `established` scene is at or before `from`. If a fact says `"established": "CH05-01"` but the description's `from` is `"CH03-01"`, that's a spoiler.
+- Verify every claim in `desc` corresponds to a fact in `facts`, and that each fact is supported by the summary for its `established` scene.
+- Watch for: naming someone before the reader learns their name, describing events before they happen, referencing characters not yet introduced, using terminology the reader hasn't encountered yet.
 
 ### Check C: No forward-implying language
 Scan all descriptions and roles for temporal language that implies the reader's current knowledge will change:
@@ -327,7 +361,7 @@ Scan all descriptions and roles for temporal language that implies the reader's 
 - Use neutral present tense: "does not understand why", "a devoted follower"
 
 ### Check D: Description continuity
-For each character/location with 2+ description entries, read them in order and verify each later entry preserves the defining facts from the earlier entry. If entry 1 says "sends more ivory than all other agents" and entry 2 drops that fact, the reader loses established knowledge.
+For each character/location with 2+ description entries, compare the `facts` arrays. Every fact present in entry N must also be present in entry N+1. If a fact is missing from a later entry, it's a regression — the reader loses established knowledge. This check is now mechanical: diff the facts arrays.
 
 ### Check E: Complete tagging
 For each scene, cross-check the summary against the `chars` and `locs` arrays. Every character mentioned in the summary should appear in `chars`. Every location should appear in `locs`.

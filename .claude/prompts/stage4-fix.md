@@ -27,7 +27,7 @@ Handle each issue by severity:
 | Check type | How to fix |
 |---|---|
 | `existence` | Remove the character/location ID from the scene's `chars`/`locs` array. If the entity genuinely appears, move its `intro` to this scene instead. |
-| `description` | Rewrite the description to contain ONLY information supported by summaries 0 through the scene where it activates. If the description reveals something from a later scene, either remove that detail or move it to a new description entry at the correct later scene. |
+| `description` | Identify the offending fact(s) in the `facts` array where `established` is after the description's `from` scene, or where the claim is unsupported. Remove those facts from the array, regenerate `desc` from the remaining facts. If the removed fact is valid at a later scene, add it to a description entry at that later scene instead. |
 | `role` | Rewrite the role to be safe from the character's `intro` scene onward. Remove any location names, event details, or relationship info not established by that point. |
 
 **Warnings (fix if straightforward):**
@@ -35,7 +35,7 @@ Handle each issue by severity:
 | Check type | How to fix |
 |---|---|
 | `inference` | Remove qualifying language ("for now", "does not yet", "once", "last"). Rewrite in neutral present tense. |
-| `description` (warning) | If the flagged claim is unsupported by any summary, remove it. If it's a minor wording issue, rephrase. |
+| `description` (warning) | If the flagged fact is unsupported by any summary, remove it from `facts` and regenerate `desc`. If it's a `desc` wording issue (fact is valid but prose is misleading), rephrase `desc` only. |
 | `existence` (warning) | Fix `intro` fields to match the earliest scene where the entity actually appears in a summary. |
 
 Always use the `suggestion` field from the review as a starting point, but verify it makes sense in context.
@@ -49,13 +49,13 @@ Handle each issue by type:
 | `missing_character` | Add the character ID to the scene's `chars` array. If the character has no entry in `characters.json` meta, create one with an appropriate `intro`, `role`, `name`, `short`, and `color`. |
 | `missing_location` | Add the location ID to the scene's `locs` array. If the location has no entry in `locations.json` meta, create one with an appropriate `intro`, `name`, `icon`, and `type`. |
 | `broken_reference` | Fix the ID to point to a valid chunk, or create the missing entry. |
-| `description_regression` | Edit the later description to incorporate the dropped facts from the earlier description. Preserve cumulative knowledge. |
-| `incomplete_coverage` | Add description entries for entities that lack them. For characters in 5+ scenes with only 1 description, add at least one progression entry at a meaningful turning point. Use summaries to determine what new information is learned. |
+| `description_regression` | Add the missing fact(s) back into the later description's `facts` array (copy from the earlier entry), then regenerate `desc` to include them. |
+| `incomplete_coverage` | Add description entries for entities that lack them. Each new entry needs `from`, `desc`, and `facts`. For characters in 5+ scenes with only 1 description, add at least one progression entry at a meaningful turning point — use summaries to determine what new facts are learned. |
 | `structural_error` | Fix the structural issue (reorder percentages, correct part indices, deduplicate IDs). |
 
 ### Conflict resolution
 
-When a spoiler fix and a continuity fix conflict (e.g., spoiler review says to remove info, continuity says a description dropped it), **the spoiler fix wins**. Spoiler-freedom is the top priority. The dropped fact should be added at a later description entry where it IS supported by summaries.
+When a spoiler fix and a continuity fix conflict (e.g., spoiler review says to remove a fact, continuity says a description dropped it), **the spoiler fix wins**. Spoiler-freedom is the top priority. Remove the fact from the current description's `facts` array. Then find the earliest later description entry where the fact IS supported by summaries, and add it there. If no later entry exists, create one.
 
 ## Process
 

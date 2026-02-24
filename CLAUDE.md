@@ -78,6 +78,7 @@ Each book lives in `data/<book-slug>/` with these files:
 ### Key Principles
 
 - **Cumulative knowledge**: Character/location descriptions reflect what the reader HAS LEARNED up to that point, not what is currently happening.
+- **Fact-tagged descriptions**: Each description entry includes a `facts` array decomposing the description into discrete claims, each tagged with the `established` scene. This makes spoiler checks and continuity checks mechanical. The `desc` field is the human-readable rendering of the facts.
 - **Spoiler-free roles**: The `role` field in character meta must be safe from the character's first appearance onward.
 - **Micro summary visibility**: The micro summary for scene N+1 is visible to readers at position N (the "next" card). Don't put twists in the first sentence.
 - **ID conventions**: SCREAMING_SNAKE_CASE for character/location IDs. Chunk IDs must sort in reading order.

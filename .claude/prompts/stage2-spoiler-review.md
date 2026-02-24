@@ -35,7 +35,13 @@ For each scene at index N (starting from 0), evaluate these four checks:
 - Character meta `role` fields for all characters with `intro` at or before N
 - All micro summaries for scenes 0 through N
 
-For each visible description, verify EVERY claim against the summaries you've seen so far. If a description says "a devoted father" but no summary through scene N has mentioned the character having children, that's a spoiler.
+**Using the `facts` array:** Each description entry includes a `facts` array where every claim is tagged with its `established` scene. This makes Check 1 largely mechanical:
+1. For each visible description, iterate through its `facts` array
+2. For each fact, verify that `established` is at or before the current position N
+3. For each fact, verify the claim is actually supported by the summary for the `established` scene
+4. Check that `desc` doesn't contain claims not covered by the `facts` array
+
+If a fact's `established` scene is after position N, that's a definite spoiler (error). If a fact claims something the summary for its `established` scene doesn't support, that's also a spoiler (error).
 
 ### Check 2: Existence Spoiler Check
 
