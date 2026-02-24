@@ -30,10 +30,13 @@ To generate data for a new book, use the agent prompts in `.claude/prompts/`. Ea
 docker compose run --rm tools extract.py /repo/path/to/book.epub --output /app/data/<book-slug>
 ```
 
-**2. Stage 1 — Annotate** (`.claude/prompts/stage1-annotate.md`):
-Read the full book and produce all data files. Use this prompt by referencing it:
+**2. Stage 1 — Annotate**:
+Read the full book and produce all data files. Choose the variant based on book length:
+- **Short books** (under ~80k words): `.claude/prompts/stage1-annotate.md`
+- **Long books** (over ~80k words): `.claude/prompts/stage1-annotate-chunked.md`
 ```
 @.claude/prompts/stage1-annotate.md — Process this book: [provide book text or chapters.json]
+@.claude/prompts/stage1-annotate-chunked.md — Process this long book: data/<slug>/chapters.json
 ```
 This creates: `meta.json`, `chunks.json`, `characters.json`, `locations.json`, `summaries.json`
 
