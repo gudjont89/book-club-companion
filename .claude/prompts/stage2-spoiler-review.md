@@ -98,6 +98,59 @@ Write your findings to `data/<book-slug>/review-spoilers.json`:
 
 You can do a lighter review (Check 2 only) for scenes that don't introduce new characters, locations, or description entries. Do the full 4-check review at scenes where new descriptions activate or new entities are introduced.
 
+## Long Books (40+ scenes)
+
+For books with 40 or more scenes, process in **windows** to manage context:
+
+### Window Strategy
+
+1. **Window size:** ~25-30 scenes per window
+2. **Windows overlap by context, not by review:** Each window reads all summaries from scene 0 to the window's end, but only reviews the new scenes
+
+### Process
+
+**Window 1 (scenes 0-29):**
+1. Read summaries for scenes 0-29
+2. Review all 30 scenes (full 4-check review where applicable)
+3. Write issues found to `data/<book-slug>/review-spoilers.json`
+4. Write a **knowledge snapshot** to `data/<book-slug>/review-spoiler-state.json`:
+
+```json
+{
+  "last_scene_reviewed": 29,
+  "known_characters": {
+    "CHARACTER_ID": "Brief summary of what the reader knows at scene 29"
+  },
+  "known_locations": {
+    "LOCATION_ID": "Brief summary of what the reader knows at scene 29"
+  },
+  "active_descriptions": {
+    "CHARACTER_ID": "The from-scene of their currently active description",
+    "LOCATION_ID": "The from-scene of their currently active description"
+  }
+}
+```
+
+**Window 2 (scenes 30-59):**
+1. Read the knowledge snapshot from window 1
+2. Read summaries for scenes 0-59 (or at minimum: the snapshot + scenes 30-59)
+3. Review only scenes 30-59
+4. Append new issues to `review-spoilers.json`
+5. Update the knowledge snapshot
+
+**Continue** until all scenes are reviewed.
+
+### Why This Works
+
+- Check 1 (descriptions) needs cumulative knowledge — the snapshot provides this compactly
+- Check 2 (existence) only needs the current scene's data — no context needed
+- Check 3 (roles) is one-time per character at their intro — snapshot tracks what's been checked
+- Check 4 (inference) needs awareness of what the reader knows — snapshot provides this
+
+### After All Windows
+
+Delete `review-spoiler-state.json` — it's intermediate work.
+
 ## Important
 
 Review scenes IN ORDER from 0 to N. Build up your knowledge incrementally — this mirrors the reader's experience.

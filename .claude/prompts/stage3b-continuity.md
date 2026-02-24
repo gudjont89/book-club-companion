@@ -96,6 +96,38 @@ Write findings to `data/<book-slug>/review-continuity.json`:
 
 If no issues are found, write an empty array `[]`.
 
+## Long Books (40+ scenes)
+
+For books with 40 or more scenes, split the work into passes by check type. This avoids needing all summaries and all descriptions in context at once.
+
+### Pass Strategy
+
+**Pass 1: Structural checks (checks 3, 5, 6)**
+These are mechanical — they only need meta objects, chunk arrays, and description arrays. No summaries needed.
+- Cross-reference integrity (check 3)
+- Completeness (check 5)
+- Structural checks (check 6)
+Write issues found to `review-continuity.json`.
+
+**Pass 2: Coverage checks (checks 1, 2) — in windows of ~30 scenes**
+These need summaries compared against `chars`/`locs` arrays.
+- Read summaries and chunks for scenes 0-29, check character/location coverage
+- Read summaries and chunks for scenes 30-59, check coverage
+- Continue until all scenes are checked
+Append issues to `review-continuity.json`.
+
+**Pass 3: Description continuity (check 4)**
+This needs description arrays only — one character/location at a time.
+- For each entity with 2+ description entries, read them in order
+- Check that later entries preserve facts from earlier entries
+Append issues to `review-continuity.json`.
+
+### Why This Works
+
+- Structural checks need zero summaries — they compare IDs against IDs
+- Coverage checks compare summaries against `chars`/`locs` arrays — both are short per scene
+- Description continuity is per-entity, not per-scene — a character with 5 descriptions is manageable regardless of book length
+
 ## After This Review
 
 This review can run in parallel with Stage 2 (spoiler review). Both produce issue lists that the human reviews together before making fixes.
