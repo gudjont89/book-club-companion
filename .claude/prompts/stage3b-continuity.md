@@ -128,6 +128,16 @@ Append issues to `review-continuity.json`.
 - Coverage checks compare summaries against `chars`/`locs` arrays — both are short per scene
 - Description continuity is per-entity, not per-scene — a character with 5 descriptions is manageable regardless of book length
 
+### Parallelization
+
+All three passes are independent and can run as parallel subagents:
+
+1. **Agent A**: Pass 1 (structural) → writes `review-continuity-structural.json`
+2. **Agent B**: Pass 2 (coverage) → writes `review-continuity-coverage.json`
+3. **Agent C**: Pass 3 (descriptions) → writes `review-continuity-descriptions.json`
+
+After all agents finish, merge into a single `review-continuity.json`.
+
 ## After This Review
 
 This review can run in parallel with Stage 2 (spoiler review). Both produce issue lists that the human reviews together before making fixes.

@@ -151,6 +151,32 @@ For books with 40 or more scenes, process in **windows** to manage context:
 
 Delete `review-spoiler-state.json` — it's intermediate work.
 
+## Parallelization
+
+Some checks can be split off from the sequential review and run concurrently:
+
+### Structural pass (can run independently)
+
+**Checks 2 and 3** do not need cumulative knowledge of summaries. They can run as a single fast pass over ALL scenes in parallel with the sequential Check 1 + 4 pass:
+
+- **Check 2 (existence):** Compare each scene's `chars`/`locs` arrays against `intro` values. Pure data comparison — no summaries needed.
+- **Check 3 (roles/badges):** Scan all role and badge fields for future-tense or trajectory-implying language. One-time per character, no scene context needed.
+
+### Content pass (must be sequential)
+
+**Checks 1 and 4** require building cumulative knowledge and must run in order:
+
+- **Check 1 (descriptions):** Needs to know everything the reader has learned so far.
+- **Check 4 (inference):** Needs to know what's established vs. what's ahead.
+
+### How to orchestrate
+
+When using Claude Code subagents, launch two agents in parallel:
+1. **Structural agent**: Runs Checks 2 + 3 across all scenes → writes `review-spoilers-structural.json`
+2. **Content agent**: Runs Checks 1 + 4 sequentially (with windowing for long books) → writes `review-spoilers-content.json`
+
+After both finish, merge into a single `review-spoilers.json`.
+
 ## Important
 
 Review scenes IN ORDER from 0 to N. Build up your knowledge incrementally — this mirrors the reader's experience.

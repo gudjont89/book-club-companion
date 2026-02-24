@@ -56,6 +56,7 @@ Compare summaries against the source text. Fix any gaps before proceeding.
 @.claude/prompts/stage2-spoiler-review.md — Review data/<book-slug>/ for spoilers
 @.claude/prompts/stage3b-continuity.md — Check continuity for data/<book-slug>/
 ```
+For long books, each review can be further parallelized internally — see the "Parallelization" sections in each prompt.
 
 **6. Stage 4 — Auto-fix** (`.claude/prompts/stage4-fix.md`):
 Automatically apply fixes from both review outputs. Spoiler fixes take priority over continuity fixes when they conflict.
