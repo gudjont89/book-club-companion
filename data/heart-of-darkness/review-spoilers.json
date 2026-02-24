@@ -1,0 +1,98 @@
+[
+  {
+    "scene": "P2-03",
+    "check": "existence",
+    "severity": "error",
+    "text": "RUSSIAN tagged in P2-03 chars array, but intro is P2-07",
+    "reason": "The Russian wanderer is listed as present in scene P2-03 ('The Reed Hut and the Book') but is not formally introduced until P2-07. At P2-03, the person who left the hut is unknown — the Manager suspects 'a wandering English trader.' Tagging the Russian here reveals his identity before the reader encounters him.",
+    "suggestion": "Remove RUSSIAN from the P2-03 chars array. The hut's occupant is unknown at this point in the story."
+  },
+  {
+    "scene": "P2-03",
+    "check": "description",
+    "severity": "error",
+    "text": "REED_HUT — description at P2-03: 'a book on seamanship with notes in Russian. Left by the young Russian wanderer.'",
+    "reason": "At P2-03, Marlow believes the marginal notes are cipher. It is only revealed at P2-07 that they are in Russian. The phrase 'Left by the young Russian wanderer' also identifies the hut's occupant, who is unknown until P2-07.",
+    "suggestion": "Change to: 'A hut of reeds fifty miles below the Inner Station. Neatly stacked firewood and a warning sign: \"Hurry up. Approach cautiously.\" Inside, a torn red curtain and a book on seamanship with notes that appear to be in cipher. The occupant is unknown.'"
+  },
+  {
+    "scene": "P2-07",
+    "check": "description",
+    "severity": "error",
+    "text": "INNER_STATION — description at P2-07: 'its fence posts topped with human heads'",
+    "reason": "At P2-07, Marlow sees 'slim posts with round carved tops' through binoculars. The revelation that they are human heads occurs in P3-01. A reader at P2-07 should not yet know what the decorations are.",
+    "suggestion": "Change to: 'Kurtz's trading post on a hill overlooking the river. A long decaying building half-buried in grass, surrounded by slim posts with round carved tops. The Russian beckons from shore. The surrounding forest hides hundreds of tribal people.'"
+  },
+  {
+    "scene": "P3-05",
+    "check": "description",
+    "severity": "error",
+    "text": "AFRICAN_WOMAN — description at P3-05: 'Marlow later connects her image with the Intended's gesture of reaching arms'",
+    "reason": "At P3-05, the Intended has not been introduced (intro P3-07) and her 'reaching arms' gesture occurs in P3-08. This references a character and scene the reader has not yet encountered, revealing both the Intended's existence and a specific future moment.",
+    "suggestion": "Remove the sentence entirely. Change to: 'A woman of wild, magnificent presence. Rushed to the water's edge when the steamer departed and was the only person who did not flinch at the steam whistle. Stretched her bare arms tragically after the departing steamer.'"
+  },
+  {
+    "scene": "P2-02",
+    "check": "description",
+    "severity": "error",
+    "text": "PILGRIMS — description at P2-02: 'They carry Winchesters but fire from the hip with their eyes shut'",
+    "reason": "At P2-02, the pilgrims are described only as riding along with their staves. The detail about firing Winchesters 'from the hip with their eyes shut' comes from the attack scene in P2-05. This description reveals combat behaviour the reader has not yet witnessed.",
+    "suggestion": "Change to: 'The Company agents who travel aboard the steamer. Marlow calls them pilgrims because they wander with long staves and worship ivory. They carry Winchesters.' Then add a new description entry from P2-05 that includes the firing detail."
+  },
+  {
+    "scene": "P1-06",
+    "check": "role",
+    "severity": "warning",
+    "text": "KURTZ — role: 'Company agent at the Inner Station'",
+    "reason": "The term 'Inner Station' is not used in any summary until P1-09 (when the brickmaker calls Kurtz 'chief of the Inner Station'). At P1-06 (Kurtz's intro), the Accountant says only that Kurtz is 'in the true ivory-country.' Using the specific name 'Inner Station' in the role reveals a location name the reader has not yet encountered.",
+    "suggestion": "Change to: 'Company agent far upriver' or 'Company agent in the ivory-country'. Update to mention the Inner Station in a later description if desired."
+  },
+  {
+    "scene": "P1-08",
+    "check": "inference",
+    "severity": "warning",
+    "text": "MARLOW — description at P1-08: 'though he does not yet understand why'",
+    "reason": "The phrase 'does not yet understand why' uses temporal qualifying language that implies Marlow will later come to understand his fascination with Kurtz. This hints at a future revelation or deepening of the relationship.",
+    "suggestion": "Change to: 'Increasingly curious about the distant agent Kurtz, though he cannot explain why. Finds meaning in practical work.'"
+  },
+  {
+    "scene": "P3-04",
+    "check": "inference",
+    "severity": "warning",
+    "text": "MARLOW — description at P3-04: 'Loyal to Kurtz despite knowing the horror of what he has become'",
+    "reason": "The phrase 'the horror' echoes Kurtz's famous final words spoken in P3-06. At P3-04 the reader has not yet heard those words. While 'horror' is a common word, in this specific book its use in a description could prime the reader for the climactic utterance.",
+    "suggestion": "Change to: 'Loyal to Kurtz despite knowing the terrible truth of what he has become.'"
+  },
+  {
+    "scene": "P3-01",
+    "check": "inference",
+    "severity": "warning",
+    "text": "RUSSIAN — description at P3-01: 'His adoration blinds him to Kurtz's moral collapse'",
+    "reason": "The phrase 'moral collapse' is an editorial judgement that goes somewhat beyond the Russian's own perspective at P3-01. The Russian still defends Kurtz and sees him as wronged. While Marlow's reflections in P3-01 support this reading, the phrasing is more of a narrative conclusion than what the reader has directly witnessed.",
+    "suggestion": "Consider softening to: 'His adoration prevents him from seeing the extent of Kurtz's transformation.'"
+  },
+  {
+    "scene": "P3-03",
+    "check": "inference",
+    "severity": "warning",
+    "text": "RUSSIAN — description at P3-03: 'Kurtz's last disciple'",
+    "reason": "The word 'last' implies a temporal finality — that the Russian is the final person to follow Kurtz. This could suggest to a reader that others will abandon Kurtz or that the Russian's departure marks a definitive end. It is a subtle framing choice that hints at trajectory.",
+    "suggestion": "Change to: 'Kurtz's most devoted follower' or simply 'A devoted follower of Kurtz.'"
+  },
+  {
+    "scene": "P3-07",
+    "check": "description",
+    "severity": "warning",
+    "text": "INTENDED — description at P3-07: 'Her family disapproved of the engagement'",
+    "reason": "This detail does not appear in any summary through P3-07. The summaries mention only that Kurtz's mother died 'watched over by his Intended' and that Marlow has her portrait and letters. The family disapproval claim is unsupported by the available summaries.",
+    "suggestion": "Remove the unsupported claim. Change to: 'Kurtz's fiancee. Still in mourning more than a year after his death. Marlow has her portrait and letters.'"
+  },
+  {
+    "scene": "P1-05",
+    "check": "existence",
+    "severity": "warning",
+    "text": "SWEDISH_CAPTAIN — intro set to P1-05, but character first appears in P1-04 summary",
+    "reason": "The P1-04 summary describes Marlow transferring to 'a little sea-going steamer captained by a young, morose Swede.' The Swedish Captain's intro is P1-05 and he is tagged in P1-05's chars. While there is no existence spoiler (he is not tagged in P1-04), the intro field is inaccurate — it should be P1-04 to match his first appearance.",
+    "suggestion": "Change SWEDISH_CAPTAIN intro to 'P1-04' and add him to the P1-04 chars array, or add a P1-04 description entry if appropriate."
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "scene": "P1-04",
+    "type": "summary_gap",
+    "severity": "warning",
+    "detail": "The summary does not mention that Marlow transfers to a 'little sea-going steamer' captained by a Swedish man. The Swedish Captain is introduced at the end of this scene's text, and the summary includes him, but the chunks.json for P1-04 does not list SWEDISH_CAPTAIN in the chars array, meaning the character tag is absent despite appearing in the scene's narrative span."
+  },
+  {
+    "scene": "P1-06",
+    "type": "summary_gap",
+    "severity": "warning",
+    "detail": "The summary does not mention that the Chief Accountant taught 'one of the native women about the station' to do his laundry, which is how he keeps his immaculate appearance. This is a minor but telling detail about the exploitation underlying his fastidiousness."
+  },
+  {
+    "scene": "P2-01",
+    "type": "summary_gap",
+    "severity": "warning",
+    "detail": "The summary refers to Kurtz sending 'his assistant' down the river with ivory. The source text specifies this person as 'an English half-caste clerk' whom Kurtz had with him. While the summary covers the event, the specific identification of this figure as an English half-caste is omitted."
+  },
+  {
+    "scene": "P2-01",
+    "type": "summary_gap",
+    "severity": "warning",
+    "detail": "The summary does not mention the Manager and uncle's discussion of a 'military post - doctor - two hundred miles - quite alone now - unavoidable delays - nine months - no news - strange rumours,' which conveys the extent of Kurtz's isolation and the fragmentary intelligence available about him."
+  },
+  {
+    "scene": "P2-02",
+    "type": "summary_gap",
+    "severity": "warning",
+    "detail": "The summary does not mention the fireman's physical details: filed teeth, shaved pate with queer patterns, three ornamental scars on each cheek, an impromptu charm tied to his arm, and a piece of polished bone through his lower lip. While the summary calls him an 'improved specimen' who fears the boiler spirit, these vivid identifying details are absent."
+  },
+  {
+    "scene": "P2-04",
+    "type": "summary_gap",
+    "severity": "warning",
+    "detail": "The summary does not mention the specific pilgrim 'a little fat man, with sandy hair and red whiskers, who wore sidespring boots, and pink pyjamas tucked into his socks' who stammers at Marlow's elbow. This is the same pilgrim in pink pyjamas who later appears in P2-05 at the helmsman's death."
+  },
+  {
+    "scene": "P2-06",
+    "type": "summary_gap",
+    "severity": "warning",
+    "detail": "The summary does not mention Marlow's lengthy proleptic digression about Kurtz's possessiveness - 'My Intended, my ivory, my station, my river' - or the detail that the wilderness had 'caressed him, loved him, embraced him, got into his veins.' While P3-06 covers Kurtz speaking these words, in the source text this passage first appears in Marlow's narration during the P2-06 section as foreshadowing."
+  },
+  {
+    "scene": "P3-02",
+    "type": "summary_gap",
+    "severity": "error",
+    "detail": "The summary does not mention that after Kurtz is carried to a cabin, he reads his letters and says directly to Marlow 'I am glad' - his first spoken words to Marlow. He also references special recommendations in those letters. This is Kurtz's first direct interaction with Marlow, a significant moment."
+  },
+  {
+    "scene": "P3-02",
+    "type": "summary_gap",
+    "severity": "warning",
+    "detail": "The summary does not mention that some pilgrims behind the stretcher carried Kurtz's weaponry - 'two shot-guns, a heavy rifle, and a light revolver-carbine' - described as 'the thunderbolts of that pitiful Jupiter.' This vivid detail characterizes Kurtz's armed authority."
+  },
+  {
+    "scene": "P3-02",
+    "type": "summary_gap",
+    "severity": "warning",
+    "detail": "The summary does not mention two bronze figures 'leaning on tall spears' in 'fantastic head-dresses of spotted skins' standing in the sunlight near the river, who appear just before the African Woman. They are part of the visual tableau surrounding Kurtz's dominion."
+  },
+  {
+    "scene": "P3-03",
+    "type": "summary_gap",
+    "severity": "warning",
+    "detail": "The summary does not mention that during the Russian's departure, he reveals Kurtz also recited poetry - 'his own, too, it was, he told me. Poetry!' This adds to the portrait of Kurtz's multifaceted nature."
+  },
+  {
+    "scene": "P3-04",
+    "type": "summary_gap",
+    "severity": "warning",
+    "detail": "The summary does not mention the agent sleeping in a chair on deck within three feet of Marlow who does not wake despite the yells. This detail underscores that Marlow chose to confront Kurtz alone rather than raise an alarm."
+  },
+  {
+    "scene": "P3-06",
+    "type": "summary_gap",
+    "severity": "warning",
+    "detail": "The summary does not mention Kurtz saying 'Close the shutter... I can't bear to look at this' (referring to the passing wilderness), followed by 'Oh, but I will wring your heart yet!' addressed to the invisible wilderness. These are significant final-days utterances revealing Kurtz's tormented relationship with the wilderness."
+  },
+  {
+    "scene": "P3-07",
+    "type": "summary_gap",
+    "severity": "warning",
+    "detail": "The summary does not mention Marlow's aunt's reappearance: her 'endeavours to nurse up my strength' after his return to Europe. This is new information about an existing character (the AUNT) showing she remained involved in Marlow's life."
+  },
+  {
+    "scene": "P3-08",
+    "type": "summary_gap",
+    "severity": "warning",
+    "detail": "The summary does not mention that the Intended's engagement to Kurtz 'had been disapproved by her people' and that Kurtz may have been driven abroad partly by 'his impatience of comparative poverty.' These details add to Kurtz's backstory and the Intended's characterization."
+  },
+  {
+    "scene": "P3-08",
+    "type": "summary_gap",
+    "severity": "warning",
+    "detail": "The summary does not mention the Narrator drawing a parallel between the Intended's gesture of outstretched arms and the African Woman's identical gesture: 'a tragic and familiar Shade, resembling in this gesture another one, tragic also, and bedecked with powerless charms, stretching bare brown arms over the glitter of the infernal stream.' This thematic connection is significant."
+  }
+]

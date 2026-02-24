@@ -1,0 +1,262 @@
+[
+  {
+    "id": "P1-01",
+    "ch": 1,
+    "part": 0,
+    "title": "The Nellie at Dusk",
+    "micro": "Five men sit aboard the yawl Nellie on the Thames at sunset, waiting for the tide to turn. Marlow breaks the silence by remarking that this too has been one of the dark places of the earth.",
+    "chars": ["MARLOW", "NARRATOR", "DIRECTOR", "LAWYER", "ACCOUNTANT_NELLIE"],
+    "locs": ["NELLIE", "THAMES"],
+    "pct": 0
+  },
+  {
+    "id": "P1-02",
+    "ch": 1,
+    "part": 0,
+    "title": "Romans in the Dark — Marlow Begins",
+    "micro": "Marlow imagines a Roman commander arriving in ancient Britain and the darkness he would have found. He then begins telling how he once became a freshwater sailor and went up a great river in Africa.",
+    "chars": ["MARLOW", "NARRATOR"],
+    "locs": ["NELLIE", "THAMES"],
+    "pct": 4
+  },
+  {
+    "id": "P1-03",
+    "ch": 1,
+    "part": 0,
+    "title": "The Sepulchral City — Getting the Appointment",
+    "micro": "Marlow tells how his aunt helped him get appointed captain of a river steamboat for a Continental trading company. He visits the Company's office in a city that reminds him of a whited sepulchre, where two women knit black wool and a doctor measures his head.",
+    "chars": ["MARLOW", "AUNT", "DOCTOR", "KNITTING_WOMEN"],
+    "locs": ["SEPULCHRAL_CITY", "COMPANY_OFFICE"],
+    "pct": 9
+  },
+  {
+    "id": "P1-04",
+    "ch": 1,
+    "part": 0,
+    "title": "The African Coast — Voyage South",
+    "micro": "Marlow sails on a French steamer along the African coast. He watches the enigmatic shoreline and sees a warship firing into the continent. The journey has a dreamlike, oppressive quality.",
+    "chars": ["MARLOW", "SWEDISH_CAPTAIN"],
+    "locs": ["AFRICAN_COAST"],
+    "pct": 14
+  },
+  {
+    "id": "P1-05",
+    "ch": 1,
+    "part": 0,
+    "title": "The Outer Station — The Grove of Death",
+    "micro": "Marlow arrives at the Company's Outer Station. He sees objectless blasting, a chain gang of enslaved workers, and stumbles into a grove where exhausted labourers have crawled away to die.",
+    "chars": ["MARLOW", "SWEDISH_CAPTAIN"],
+    "locs": ["OUTER_STATION", "GROVE_OF_DEATH"],
+    "pct": 19
+  },
+  {
+    "id": "P1-06",
+    "ch": 1,
+    "part": 0,
+    "title": "The Chief Accountant — First Word of Kurtz",
+    "micro": "Marlow meets the immaculately dressed Chief Accountant, who keeps perfect books amid the chaos. The Accountant mentions a remarkable agent named Mr. Kurtz who sends in more ivory than all the others combined.",
+    "chars": ["MARLOW", "CHIEF_ACCOUNTANT", "KURTZ"],
+    "locs": ["OUTER_STATION"],
+    "pct": 24
+  },
+  {
+    "id": "P1-07",
+    "ch": 1,
+    "part": 0,
+    "title": "The Two-Hundred-Mile Trek",
+    "micro": "Marlow sets out on a fifteen-day overland march with sixty carriers. He passes abandoned villages, encounters a drunken white road-keeper, and carries his fleshy companion through bouts of fever.",
+    "chars": ["MARLOW"],
+    "locs": ["OVERLAND_TRAIL"],
+    "pct": 28
+  },
+  {
+    "id": "P1-08",
+    "ch": 1,
+    "part": 0,
+    "title": "The Central Station — The Manager",
+    "micro": "Marlow arrives at the Central Station to find his steamer sunk. He meets the Manager, a man who inspires unease rather than respect, and learns that Kurtz's station may be in jeopardy.",
+    "chars": ["MARLOW", "MANAGER", "KURTZ"],
+    "locs": ["CENTRAL_STATION"],
+    "pct": 33
+  },
+  {
+    "id": "P1-09",
+    "ch": 1,
+    "part": 0,
+    "title": "The Brickmaker and the Painting",
+    "micro": "After a fire in the station yard, Marlow visits the brickmaker, who tries to pump him for information about his connections in Europe. Marlow sees a painting by Kurtz of a blindfolded woman carrying a torch. The brickmaker reveals that Kurtz is destined for great things in the Company.",
+    "chars": ["MARLOW", "BRICKMAKER", "KURTZ"],
+    "locs": ["CENTRAL_STATION"],
+    "pct": 39
+  },
+  {
+    "id": "P1-10",
+    "ch": 1,
+    "part": 0,
+    "title": "Rivets and the Eldorado Expedition",
+    "micro": "Marlow desperately needs rivets to repair the steamer, but none arrive. He and the boilermaker celebrate a false hope of getting them. Instead, the Eldorado Exploring Expedition arrives, led by the Manager's uncle, a band of greedy treasure-hunters.",
+    "chars": ["MARLOW", "BOILERMAKER", "MANAGER_UNCLE", "MANAGER"],
+    "locs": ["CENTRAL_STATION"],
+    "pct": 44
+  },
+  {
+    "id": "P2-01",
+    "ch": 2,
+    "part": 1,
+    "title": "The Overheard Conversation",
+    "micro": "Lying on deck, Marlow overhears the Manager and his uncle discussing Kurtz. They resent his influence and hope the climate will dispose of him. The uncle gestures toward the wilderness as if invoking its deadly power.",
+    "chars": ["MARLOW", "MANAGER", "MANAGER_UNCLE", "KURTZ"],
+    "locs": ["CENTRAL_STATION"],
+    "pct": 48
+  },
+  {
+    "id": "P2-02",
+    "ch": 2,
+    "part": 1,
+    "title": "Upriver — Into the Heart of Darkness",
+    "micro": "The steamer crawls upriver through primeval forest. Marlow navigates snags and shallows while the cannibal crew grows hungrier. Drums echo at night, and villages flash by in glimpses of frenzy. Marlow reflects on the unsettling kinship between civilisation and savagery.",
+    "chars": ["MARLOW", "MANAGER", "HELMSMAN", "PILGRIMS", "CANNIBALS"],
+    "locs": ["CONGO_RIVER"],
+    "pct": 52
+  },
+  {
+    "id": "P2-03",
+    "ch": 2,
+    "part": 1,
+    "title": "The Reed Hut and the Book",
+    "micro": "Fifty miles below Kurtz's station, they find an abandoned hut with stacked firewood and a warning sign. Inside, Marlow discovers a book on seamanship with notes in what appears to be cipher. The Manager suspects a wandering trader.",
+    "chars": ["MARLOW", "MANAGER"],
+    "locs": ["REED_HUT", "CONGO_RIVER"],
+    "pct": 57
+  },
+  {
+    "id": "P2-04",
+    "ch": 2,
+    "part": 1,
+    "title": "The Fog and the Cries",
+    "micro": "Eight miles from Kurtz's station, a thick white fog descends and an unearthly shriek rises from the forest. Marlow argues the cries express sorrow, not hostility. The crew debates whether the unseen people will attack.",
+    "chars": ["MARLOW", "MANAGER", "HELMSMAN", "PILGRIMS", "CANNIBALS"],
+    "locs": ["CONGO_RIVER"],
+    "pct": 61
+  },
+  {
+    "id": "P2-05",
+    "ch": 2,
+    "part": 1,
+    "title": "The Arrow Attack — The Helmsman Falls",
+    "micro": "Arrows rain from the bush. The helmsman opens the shutter to fire and is killed by a spear. Marlow blasts the steam whistle and the attackers flee. He assumes Kurtz must be dead too.",
+    "chars": ["MARLOW", "HELMSMAN", "PILGRIMS", "KURTZ"],
+    "locs": ["CONGO_RIVER"],
+    "pct": 66
+  },
+  {
+    "id": "P2-06",
+    "ch": 2,
+    "part": 1,
+    "title": "Mourning the Helmsman — Kurtz as a Voice",
+    "micro": "Marlow tips the helmsman's body overboard to prevent the cannibals from eating it. He reflects on Kurtz as primarily a voice, the gift of expression. Marlow reveals he knows Kurtz's background and has read his eloquent report on the Suppression of Savage Customs, which ends with 'Exterminate all the brutes!'",
+    "chars": ["MARLOW", "HELMSMAN", "KURTZ", "CANNIBALS", "PILGRIMS"],
+    "locs": ["CONGO_RIVER"],
+    "pct": 70
+  },
+  {
+    "id": "P2-07",
+    "ch": 2,
+    "part": 1,
+    "title": "Arrival at the Inner Station — The Harlequin",
+    "micro": "The steamer reaches Kurtz's station. A young man in colourful patched clothes beckons from shore. Marlow learns he is a Russian wanderer who has been living near Kurtz and left the firewood and the book downstream.",
+    "chars": ["MARLOW", "RUSSIAN", "MANAGER", "KURTZ", "PILGRIMS"],
+    "locs": ["INNER_STATION"],
+    "pct": 74
+  },
+  {
+    "id": "P3-01",
+    "ch": 3,
+    "part": 2,
+    "title": "The Harlequin's Tale — The Heads on Stakes",
+    "micro": "The Russian describes Kurtz's power over the local tribes, his ivory raids, and his violent moods. Through binoculars, Marlow discovers that the ornamental knobs on the fence posts are human heads on stakes.",
+    "chars": ["MARLOW", "RUSSIAN", "KURTZ", "MANAGER"],
+    "locs": ["INNER_STATION"],
+    "pct": 78
+  },
+  {
+    "id": "P3-02",
+    "ch": 3,
+    "part": 2,
+    "title": "The African Woman — Kurtz Carried Out",
+    "micro": "A stately African woman adorned with brass and beads walks to the riverbank and stretches her arms over the water. Kurtz is carried out on a stretcher. He commands the crowd from his litter, and the warriors melt back into the forest.",
+    "chars": ["MARLOW", "KURTZ", "AFRICAN_WOMAN", "RUSSIAN", "MANAGER", "PILGRIMS"],
+    "locs": ["INNER_STATION"],
+    "pct": 82
+  },
+  {
+    "id": "P3-03",
+    "ch": 3,
+    "part": 2,
+    "title": "The Manager's Verdict — The Russian Departs",
+    "micro": "The Manager tells Marlow that Kurtz's methods are unsound. Marlow sides with Kurtz. The Russian reveals that Kurtz ordered the attack on the steamer, then slips away into the night with cartridges, tobacco, and his book.",
+    "chars": ["MARLOW", "MANAGER", "RUSSIAN", "KURTZ"],
+    "locs": ["INNER_STATION"],
+    "pct": 85
+  },
+  {
+    "id": "P3-04",
+    "ch": 3,
+    "part": 2,
+    "title": "Midnight Escape — Marlow Retrieves Kurtz",
+    "micro": "Marlow wakes at midnight to find Kurtz's cabin empty. He tracks Kurtz through the grass toward the drumbeats and fires. He confronts Kurtz and, appealing to his ambition, persuades him to return to the steamer.",
+    "chars": ["MARLOW", "KURTZ"],
+    "locs": ["INNER_STATION"],
+    "pct": 88
+  },
+  {
+    "id": "P3-05",
+    "ch": 3,
+    "part": 2,
+    "title": "Departure — The Woman's Last Stand",
+    "micro": "The steamer departs at noon. The crowd flows out of the forest. The African woman rushes to the water's edge and stretches her arms. Marlow blasts the whistle and the crowd scatters, but she does not flinch.",
+    "chars": ["MARLOW", "KURTZ", "AFRICAN_WOMAN", "PILGRIMS"],
+    "locs": ["INNER_STATION", "CONGO_RIVER"],
+    "pct": 90
+  },
+  {
+    "id": "P3-06",
+    "ch": 3,
+    "part": 2,
+    "title": "The Horror — Kurtz Dies",
+    "micro": "On the journey downriver, Kurtz rambles about his plans, his ivory, his Intended. The steamer breaks down for repairs. One evening Kurtz whispers his final words: 'The horror! The horror!' Shortly after, the manager's boy announces his death.",
+    "chars": ["MARLOW", "KURTZ", "MANAGER", "PILGRIMS"],
+    "locs": ["CONGO_RIVER"],
+    "pct": 92
+  },
+  {
+    "id": "P3-07",
+    "ch": 3,
+    "part": 2,
+    "title": "Return to the Sepulchral City",
+    "micro": "Marlow nearly dies of fever. Back in Europe, he resents the safe, ignorant city. He fends off a Company representative, Kurtz's cousin, and a journalist, each seeking Kurtz's papers. He keeps the private letters and the portrait of the Intended.",
+    "chars": ["MARLOW", "KURTZ", "COMPANY_REPRESENTATIVE", "KURTZ_COUSIN", "JOURNALIST", "INTENDED"],
+    "locs": ["SEPULCHRAL_CITY"],
+    "pct": 94
+  },
+  {
+    "id": "P3-08",
+    "ch": 3,
+    "part": 2,
+    "title": "The Intended — The Lie",
+    "micro": "Marlow visits Kurtz's fiancee, who is still in mourning. She speaks of Kurtz's nobility and asks to hear his last words. Marlow lies and tells her the last word Kurtz pronounced was her name.",
+    "chars": ["MARLOW", "INTENDED", "KURTZ"],
+    "locs": ["INTENDED_HOUSE", "SEPULCHRAL_CITY"],
+    "pct": 96
+  },
+  {
+    "id": "P3-09",
+    "ch": 3,
+    "part": 2,
+    "title": "Darkness on the Thames",
+    "micro": "Marlow falls silent. The narrator looks out from the Nellie at the overcast sky. The tranquil waterway seems to lead into the heart of an immense darkness.",
+    "chars": ["MARLOW", "NARRATOR", "DIRECTOR"],
+    "locs": ["NELLIE", "THAMES"],
+    "pct": 99
+  }
+]

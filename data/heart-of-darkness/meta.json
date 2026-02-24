@@ -1,0 +1,22 @@
+{
+  "slug": "heart-of-darkness",
+  "title": "Heart of Darkness",
+  "author": "Joseph Conrad",
+  "sections": [
+    "Part I",
+    "Part II",
+    "Part III"
+  ],
+  "theme": {
+    "headerBg": "#1A2A1A",
+    "headerGradientEnd": "#2C3E2C",
+    "accent": "#5B7B3A",
+    "accentLight": "#A8C07A",
+    "text": "#1A2A1A",
+    "textSecondary": "#5A6B5A",
+    "cardBg": "#F2F4EF",
+    "cardBorder": "#C8D4BC",
+    "background": "#F8FAF5",
+    "tabInactive": "#8A9A7A"
+  }
+}

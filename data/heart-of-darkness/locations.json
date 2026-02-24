@@ -1,0 +1,210 @@
+{
+  "meta": {
+    "NELLIE": {
+      "name": "The Nellie",
+      "icon": "⛵",
+      "intro": "P1-01",
+      "type": "ship"
+    },
+    "THAMES": {
+      "name": "The Thames",
+      "icon": "🌊",
+      "intro": "P1-01",
+      "type": "river"
+    },
+    "SEPULCHRAL_CITY": {
+      "name": "The Sepulchral City",
+      "icon": "🏛️",
+      "intro": "P1-03",
+      "type": "city"
+    },
+    "COMPANY_OFFICE": {
+      "name": "The Company Office",
+      "icon": "🏢",
+      "intro": "P1-03",
+      "type": "office"
+    },
+    "AFRICAN_COAST": {
+      "name": "The African Coast",
+      "icon": "🌍",
+      "intro": "P1-04",
+      "type": "coastline"
+    },
+    "OUTER_STATION": {
+      "name": "The Outer Station",
+      "icon": "⛏️",
+      "intro": "P1-05",
+      "type": "trading post"
+    },
+    "GROVE_OF_DEATH": {
+      "name": "The Grove of Death",
+      "icon": "🌑",
+      "intro": "P1-05",
+      "type": "clearing"
+    },
+    "OVERLAND_TRAIL": {
+      "name": "The Overland Trail",
+      "icon": "🥾",
+      "intro": "P1-07",
+      "type": "trail"
+    },
+    "CENTRAL_STATION": {
+      "name": "The Central Station",
+      "icon": "🏚️",
+      "intro": "P1-08",
+      "type": "trading post"
+    },
+    "CONGO_RIVER": {
+      "name": "The Congo River",
+      "icon": "🐍",
+      "intro": "P2-02",
+      "type": "river"
+    },
+    "REED_HUT": {
+      "name": "The Reed Hut",
+      "icon": "🛖",
+      "intro": "P2-03",
+      "type": "hut"
+    },
+    "INNER_STATION": {
+      "name": "The Inner Station",
+      "icon": "💀",
+      "intro": "P2-07",
+      "type": "trading post"
+    },
+    "INTENDED_HOUSE": {
+      "name": "The Intended's House",
+      "icon": "🚪",
+      "intro": "P3-08",
+      "type": "residence"
+    }
+  },
+  "descriptions": {
+    "NELLIE": [
+      {
+        "from": "P1-01",
+        "desc": "A cruising yawl anchored on the Thames at dusk, waiting for the turn of the tide. Five men sit on deck in meditative silence. The setting for Marlow's tale."
+      },
+      {
+        "from": "P3-09",
+        "desc": "The yawl on which Marlow has told his entire story through the night. The tide has turned. The waterway now seems to lead into the heart of an immense darkness."
+      }
+    ],
+    "THAMES": [
+      {
+        "from": "P1-01",
+        "desc": "The Thames at its sea-reach. A venerable stream that has served adventurers and settlers since the days of Drake and Franklin. Marlow notes it too was once a dark place when the Romans came."
+      },
+      {
+        "from": "P3-09",
+        "desc": "The same river, now under an overcast sky after Marlow's tale. It seems to flow into an immense darkness, its earlier luminous serenity replaced by sombre foreboding."
+      }
+    ],
+    "SEPULCHRAL_CITY": [
+      {
+        "from": "P1-03",
+        "desc": "A Continental city — Brussels unnamed — that Marlow calls a whited sepulchre. Narrow, deserted streets in deep shadow with grass growing between the stones. Home to the Company's offices."
+      },
+      {
+        "from": "P3-07",
+        "desc": "The city Marlow returns to after his illness. He resents its complacent inhabitants who hurry about in perfect safety. It is where he confronts the legacy of Kurtz through visitors seeking his papers."
+      }
+    ],
+    "COMPANY_OFFICE": [
+      {
+        "from": "P1-03",
+        "desc": "The trading Company's headquarters. A dim, oppressive building with two knitting women, a compassionate secretary, and a great man who speaks French. A large map on the wall shows the coloured territories. The atmosphere is ominous, like a conspiracy."
+      }
+    ],
+    "AFRICAN_COAST": [
+      {
+        "from": "P1-04",
+        "desc": "The west coast of Africa seen from a French steamer. A monotonous, featureless edge of colossal jungle. Landing points with farcical names where soldiers and custom-house clerks are deposited. A French warship fires into the continent."
+      }
+    ],
+    "OUTER_STATION": [
+      {
+        "from": "P1-05",
+        "desc": "The Company's first station, reached by coastal steamer. A rocky cliff with mounds of turned-up earth, barrack-like structures, and objectless blasting. Boilers and machinery rust in the grass. A chain gang of enslaved labourers toils nearby."
+      },
+      {
+        "from": "P1-06",
+        "desc": "The Outer Station where Marlow waits ten days. A muddle of heads, things, and buildings. Streams of manufactured goods go in; a trickle of ivory comes out. The Chief Accountant keeps impeccable books in a badly-built office striped with sunlight."
+      }
+    ],
+    "GROVE_OF_DEATH": [
+      {
+        "from": "P1-05",
+        "desc": "A shady grove near the Outer Station where exhausted, sick African labourers crawl to die. Black shapes crouch and lie in attitudes of pain and despair. The rushing noise of the rapids fills the mournful stillness."
+      }
+    ],
+    "OVERLAND_TRAIL": [
+      {
+        "from": "P1-07",
+        "desc": "A two-hundred-mile trek through empty land. Paths through long grass, burnt grass, thickets, stony hills. Abandoned villages, carriers dying in harness, the distant tremor of drums at night. Fifteen days of solitude and endurance."
+      }
+    ],
+    "CENTRAL_STATION": [
+      {
+        "from": "P1-08",
+        "desc": "A station on a backwater surrounded by scrub and forest, with a border of smelly mud. Enclosed by a crazy fence of rushes. The Manager presides over a muddle of white men wandering with long staves. Ivory is the only topic. Marlow's steamer lies sunk nearby."
+      },
+      {
+        "from": "P1-10",
+        "desc": "The Central Station during the long wait for rivets. A shed of calico and beads burns down one night. The Eldorado Expedition arrives in sections, deepening the air of sordid mystery."
+      },
+      {
+        "from": "P2-01",
+        "desc": "The Central Station where the Manager and his uncle conspire against Kurtz. The Eldorado Expedition departs into the wilderness and is never heard from again. The steamer is finally repaired."
+      }
+    ],
+    "CONGO_RIVER": [
+      {
+        "from": "P2-02",
+        "desc": "The great river, snaking through primeval forest. The steamer crawls upward through silence, fog, and danger. Hippos and alligators sun themselves. Drums echo at night. Marlow navigates snags and shallows while the cannibal crew grows hungry."
+      },
+      {
+        "from": "P2-05",
+        "desc": "The river near Kurtz's station. A narrow channel between a sandbank and a steep, overgrown bank. The site of the arrow attack that killed the helmsman."
+      },
+      {
+        "from": "P3-06",
+        "desc": "The river on the return journey. The brown current carries them swiftly downstream. Kurtz's life ebbs along with it. The steamer breaks down once more before Kurtz dies."
+      }
+    ],
+    "REED_HUT": [
+      {
+        "from": "P2-03",
+        "desc": "A hut of reeds fifty miles below the Inner Station. Neatly stacked firewood and a warning sign: 'Hurry up. Approach cautiously.' Inside, a torn red curtain and a book on seamanship with notes in what appears to be cipher. The occupant is unknown."
+      },
+      {
+        "from": "P2-07",
+        "desc": "A hut of reeds fifty miles below the Inner Station. Left by the young Russian wanderer, who stacked firewood for the steamer and left a warning sign. The book with notes in apparent cipher turned out to be annotated in Russian."
+      }
+    ],
+    "INNER_STATION": [
+      {
+        "from": "P2-07",
+        "desc": "Kurtz's trading post on a hill overlooking the river. A long decaying building half-buried in grass, with slim fence posts topped by round carved ornaments. The Russian beckons from shore. The surrounding forest hides hundreds of tribal people."
+      },
+      {
+        "from": "P3-01",
+        "desc": "Kurtz's trading post on a hill overlooking the river. A long decaying building half-buried in grass. Through binoculars, Marlow discovers the ornamental fence posts are topped with human heads — the heads of rebels. The Russian confirms Kurtz presided over unspeakable ceremonies here."
+      },
+      {
+        "from": "P3-02",
+        "desc": "The Inner Station during Kurtz's removal. The African woman walks the riverbank. Warriors and drums fill the forest. Kurtz commands the crowd from his stretcher. The place is the endpoint of Marlow's journey and the seat of Kurtz's terrible dominion."
+      },
+      {
+        "from": "P3-04",
+        "desc": "The Inner Station at midnight. Fires burn in the forest. Drums beat and men chant. Kurtz crawls from his cabin toward the tribal ceremonies. Marlow tracks him down and brings him back."
+      }
+    ],
+    "INTENDED_HOUSE": [
+      {
+        "from": "P3-08",
+        "desc": "The Intended's home in the sepulchral city. A lofty drawing-room with three tall windows, gilt furniture, a marble fireplace, and a grand piano like a polished sarcophagus. Growing darker as the dusk falls. Where Marlow tells his final lie."
+      }
+    ]
+  }
+}

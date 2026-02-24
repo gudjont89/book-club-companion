@@ -1,0 +1,402 @@
+{
+  "meta": {
+    "MARLOW": {
+      "name": "Charlie Marlow",
+      "short": "Marlow",
+      "role": "Narrator and protagonist",
+      "intro": "P1-01",
+      "color": "#4A5859"
+    },
+    "NARRATOR": {
+      "name": "The Unnamed Narrator",
+      "short": "Narrator",
+      "role": "Frame narrator aboard the Nellie",
+      "intro": "P1-01",
+      "color": "#7A8B8B"
+    },
+    "KURTZ": {
+      "name": "Mr. Kurtz",
+      "short": "Kurtz",
+      "role": "Remarkable Company agent upriver",
+      "intro": "P1-06",
+      "color": "#F5F0DC"
+    },
+    "MANAGER": {
+      "name": "The Manager",
+      "short": "The Manager",
+      "role": "Manager of the Central Station",
+      "intro": "P1-08",
+      "color": "#6B4E3D"
+    },
+    "RUSSIAN": {
+      "name": "The Russian Harlequin",
+      "short": "The Russian",
+      "role": "Young wanderer devoted to Kurtz",
+      "intro": "P2-07",
+      "color": "#D4A83E"
+    },
+    "INTENDED": {
+      "name": "Kurtz's Intended",
+      "short": "The Intended",
+      "role": "Kurtz's fiancee in Europe",
+      "intro": "P3-07",
+      "color": "#E8D5C4"
+    },
+    "AFRICAN_WOMAN": {
+      "name": "The African Woman",
+      "short": "African Woman",
+      "role": "Commanding woman at the Inner Station",
+      "intro": "P3-02",
+      "color": "#8B4513"
+    },
+    "CHIEF_ACCOUNTANT": {
+      "name": "The Chief Accountant",
+      "short": "Chief Accountant",
+      "role": "Company bookkeeper at the Outer Station",
+      "intro": "P1-06",
+      "color": "#EEEEEE"
+    },
+    "BRICKMAKER": {
+      "name": "The Brickmaker",
+      "short": "Brickmaker",
+      "role": "Agent at the Central Station",
+      "intro": "P1-09",
+      "color": "#B8860B"
+    },
+    "HELMSMAN": {
+      "name": "The Helmsman",
+      "short": "Helmsman",
+      "role": "African steersman of Marlow's steamboat",
+      "intro": "P2-02",
+      "color": "#2F4F4F"
+    },
+    "MANAGER_UNCLE": {
+      "name": "The Manager's Uncle",
+      "short": "Manager's Uncle",
+      "role": "Leader of the Eldorado Exploring Expedition",
+      "intro": "P1-10",
+      "color": "#704214"
+    },
+    "AUNT": {
+      "name": "Marlow's Aunt",
+      "short": "Marlow's Aunt",
+      "role": "Marlow's well-connected relative",
+      "intro": "P1-03",
+      "color": "#C48A9E"
+    },
+    "DIRECTOR": {
+      "name": "The Director of Companies",
+      "short": "Director",
+      "role": "Captain and host of the Nellie",
+      "intro": "P1-01",
+      "color": "#3D5C5C"
+    },
+    "LAWYER": {
+      "name": "The Lawyer",
+      "short": "Lawyer",
+      "role": "Companion on the Nellie",
+      "intro": "P1-01",
+      "color": "#6A6A6A"
+    },
+    "ACCOUNTANT_NELLIE": {
+      "name": "The Accountant",
+      "short": "Accountant",
+      "role": "Companion on the Nellie",
+      "intro": "P1-01",
+      "color": "#5A5A5A"
+    },
+    "SWEDISH_CAPTAIN": {
+      "name": "The Swedish Captain",
+      "short": "Swedish Captain",
+      "role": "Captain of the coastal steamer",
+      "intro": "P1-04",
+      "color": "#5B86A7"
+    },
+    "BOILERMAKER": {
+      "name": "The Boilermaker",
+      "short": "Boilermaker",
+      "role": "Foreman at the Central Station",
+      "intro": "P1-10",
+      "color": "#8B7355"
+    },
+    "DOCTOR": {
+      "name": "The Company Doctor",
+      "short": "Doctor",
+      "role": "Doctor in the sepulchral city",
+      "intro": "P1-03",
+      "color": "#808080"
+    },
+    "KNITTING_WOMEN": {
+      "name": "The Knitting Women",
+      "short": "Knitting Women",
+      "role": "Receptionists at the Company office",
+      "intro": "P1-03",
+      "color": "#2B2B2B"
+    },
+    "PILGRIMS": {
+      "name": "The Pilgrims",
+      "short": "Pilgrims",
+      "role": "Company agents with ivory ambitions",
+      "intro": "P2-02",
+      "color": "#A9A9A9"
+    },
+    "CANNIBALS": {
+      "name": "The Cannibal Crew",
+      "short": "Cannibals",
+      "role": "African crew of the steamboat",
+      "intro": "P2-02",
+      "color": "#3B5323"
+    },
+    "COMPANY_REPRESENTATIVE": {
+      "name": "The Company Representative",
+      "short": "Company Man",
+      "role": "Official seeking Kurtz's papers",
+      "intro": "P3-07",
+      "color": "#777777"
+    },
+    "KURTZ_COUSIN": {
+      "name": "Kurtz's Cousin",
+      "short": "Cousin",
+      "role": "Kurtz's relative in Europe",
+      "intro": "P3-07",
+      "color": "#888888"
+    },
+    "JOURNALIST": {
+      "name": "The Journalist",
+      "short": "Journalist",
+      "role": "Colleague seeking Kurtz's papers",
+      "intro": "P3-07",
+      "color": "#999999"
+    }
+  },
+  "descriptions": {
+    "MARLOW": [
+      {
+        "from": "P1-01",
+        "desc": "A seaman and wanderer, unlike most sailors. Sits cross-legged on the Nellie like a meditating Buddha. Sunken cheeks, yellow complexion, ascetic aspect. He has followed the sea for years and sees meaning in episodes differently from other seamen."
+      },
+      {
+        "from": "P1-03",
+        "desc": "A seaman and wanderer. Recently returned from years in the East. Has an aunt with connections to a Continental trading company. Secured an appointment as a steamboat captain through her influence after his predecessor was killed."
+      },
+      {
+        "from": "P1-08",
+        "desc": "A resourceful seaman now stranded at the Central Station with a sunken steamboat. Detests lies and pretence. Growing curious about the distant agent Kurtz. Finds meaning in practical work."
+      },
+      {
+        "from": "P2-05",
+        "desc": "An experienced river pilot who has navigated the Congo for months. Has developed a bond with his helmsman and a grudging respect for his cannibal crew. Increasingly driven to reach Kurtz, whom he thinks of primarily as a voice."
+      },
+      {
+        "from": "P3-04",
+        "desc": "A man who has confronted the wilderness and its effect on human souls. Tracked Kurtz through the night and appealed to his ambition to bring him back. Loyal to Kurtz despite witnessing his degradation."
+      },
+      {
+        "from": "P3-08",
+        "desc": "A man profoundly changed by his journey. Nearly died of fever. Chose to lie to Kurtz's Intended rather than tell her his true last words. Sees the darkness that lurks beneath civilisation. Tells his story from the deck of the Nellie like a man haunted."
+      }
+    ],
+    "NARRATOR": [
+      {
+        "from": "P1-01",
+        "desc": "An unnamed sailor aboard the Nellie. Listens to Marlow's tale and records it. Observant and reflective, he notes Marlow's unusual storytelling style."
+      },
+      {
+        "from": "P3-09",
+        "desc": "The unnamed frame narrator. Has listened to the entirety of Marlow's tale through the night. Looks out at the Thames and sees it now as leading into an immense darkness."
+      }
+    ],
+    "KURTZ": [
+      {
+        "from": "P1-06",
+        "desc": "A Company agent stationed far upriver, known only by reputation. The Chief Accountant calls him a very remarkable person who sends in more ivory than all the other agents combined."
+      },
+      {
+        "from": "P1-09",
+        "desc": "A first-class agent who sends in more ivory than all others combined and is expected to rise high in the Company. The brickmaker considers him a prodigy sent by Europe. He painted a striking oil of a blindfolded woman carrying a torch."
+      },
+      {
+        "from": "P2-01",
+        "desc": "An agent whose influence in Europe frightens the Manager. Has been alone at his station for over a year. Sent his assistant away, turned back from a journey downriver, and continues to send enormous quantities of ivory."
+      },
+      {
+        "from": "P2-06",
+        "desc": "Half-English, half-French, educated partly in England. All Europe contributed to his making. Wrote an eloquent report on the Suppression of Savage Customs that concludes with the scrawled note: 'Exterminate all the brutes!' Known primarily as a voice of extraordinary power."
+      },
+      {
+        "from": "P3-01",
+        "desc": "An agent who has become a god-figure to the local tribes. Conducts ivory raids with tribal warriors. Threatened to kill the Russian over ivory. Has human heads mounted on stakes outside his house. The wilderness has consumed him."
+      },
+      {
+        "from": "P3-04",
+        "desc": "A dying man who crawled from his cabin toward the tribal fires at midnight. His intelligence remains clear but his soul is mad. Speaks of immense plans and the threshold of great things, yet has kicked himself loose of all moral restraint."
+      },
+      {
+        "from": "P3-06",
+        "desc": "Dead. Whispered his final words, 'The horror! The horror!' — a judgment on himself and on everything he had seen and done. Buried in a muddy hole by the pilgrims. A man of extraordinary gifts who became hollow at the core."
+      }
+    ],
+    "MANAGER": [
+      {
+        "from": "P1-08",
+        "desc": "Manager of the Central Station. Middle-sized, ordinary, with remarkably cold blue eyes. Inspires uneasiness, not respect. Has survived three terms in Africa solely through unbreakable health. Originated nothing, but keeps the routine going."
+      },
+      {
+        "from": "P2-01",
+        "desc": "Manager of the Central Station who secretly hopes Kurtz will die. Overheard conspiring with his uncle, hoping the climate will eliminate his rival. Preserves appearances while scheming."
+      },
+      {
+        "from": "P3-03",
+        "desc": "Manager who declared Kurtz's methods 'unsound.' Placid and satisfied now that Kurtz is dying. Regards Marlow as an ally of 'unsound method' for defending Kurtz."
+      }
+    ],
+    "RUSSIAN": [
+      {
+        "from": "P2-07",
+        "desc": "A young Russian wanderer in patched, colourful clothes. Son of an arch-priest from Tambov. Ran away from school, went to sea, and was fitted out by a Dutch trader. Has been wandering the river for two years alone. Left the firewood and the book of seamanship downstream."
+      },
+      {
+        "from": "P3-01",
+        "desc": "A young Russian wanderer in patched, colourful clothes. Son of an arch-priest from Tambov who ran away from school. A devoted disciple of Kurtz who has nursed him through two illnesses. Kurtz once threatened to shoot him over ivory, but he stayed. Says Kurtz enlarged his mind. His adoration blinds him to Kurtz's depravity."
+      },
+      {
+        "from": "P3-03",
+        "desc": "A young Russian wanderer in patched, colourful clothes devoted to Kurtz. Revealed that Kurtz ordered the attack on the steamer to prevent being taken away. Slipped into the night with cartridges and tobacco, leaving by canoe to rejoin friendly tribes."
+      }
+    ],
+    "INTENDED": [
+      {
+        "from": "P3-07",
+        "desc": "Kurtz's fiancee. Still in mourning more than a year after his death. Marlow has her portrait and personal letters."
+      },
+      {
+        "from": "P3-08",
+        "desc": "Kurtz's fiancee. A woman with a mature capacity for fidelity, faith, and suffering. Remembers Kurtz as noble and good. Marlow could not tell her the truth and lied that Kurtz's last word was her name."
+      }
+    ],
+    "AFRICAN_WOMAN": [
+      {
+        "from": "P3-02",
+        "desc": "A commanding, stately woman at the Inner Station. Draped in striped cloth, adorned with brass leggings, gauntlets, and innumerable necklaces. She walks to the riverbank and stretches her arms over the water in a gesture that mirrors the wilderness itself."
+      },
+      {
+        "from": "P3-05",
+        "desc": "A woman of wild, magnificent presence. Rushed to the water's edge when the steamer departed and was the only person who did not flinch at the steam whistle. Her arms stretched over the water in defiance."
+      }
+    ],
+    "CHIEF_ACCOUNTANT": [
+      {
+        "from": "P1-06",
+        "desc": "The Company's chief bookkeeper at the Outer Station. Immaculately dressed in white amid chaos. Keeps perfect books despite the heat and flies. First to mention Kurtz by name to Marlow — 'He will go far, very far.'"
+      }
+    ],
+    "BRICKMAKER": [
+      {
+        "from": "P1-09",
+        "desc": "A first-class agent at the Central Station who makes no bricks. Has a silver-mounted dressing case and a whole candle. Suspected of being the Manager's spy. Tried to pump Marlow for information about his European connections. Fears that Kurtz and Marlow are part of 'the gang of virtue.'"
+      }
+    ],
+    "HELMSMAN": [
+      {
+        "from": "P2-02",
+        "desc": "An athletic Black man from a coastal tribe, educated by Marlow's predecessor. Wears brass earrings and a blue cloth wrapper. An unstable steersman — confident when watched, panicky when not."
+      },
+      {
+        "from": "P2-05",
+        "desc": "Killed by a spear during the arrow attack. He had opened the shutter to fire the Martini-Henry instead of steering. Marlow felt his death deeply as the loss of a partnership forged over months on the river."
+      }
+    ],
+    "MANAGER_UNCLE": [
+      {
+        "from": "P1-10",
+        "desc": "Leader of the Eldorado Exploring Expedition and the Manager's uncle. Resembles a butcher, with a fat paunch and sleepy cunning. His band of treasure-hunters is reckless, greedy, and without foresight."
+      },
+      {
+        "from": "P2-01",
+        "desc": "The Manager's uncle and co-conspirator. Hopes the African climate will eliminate Kurtz. Gestured toward the wilderness as if trusting it to do their dirty work. His expedition vanished into the forest and was never heard from again."
+      }
+    ],
+    "AUNT": [
+      {
+        "from": "P1-03",
+        "desc": "Marlow's aunt. A dear, enthusiastic soul with connections to the Company's administration. She sees Marlow as an emissary of light weaning the ignorant from their horrid ways. Marlow finds her idealism out of touch with reality."
+      }
+    ],
+    "DIRECTOR": [
+      {
+        "from": "P1-01",
+        "desc": "The Director of Companies. Captain and host of the Nellie. Resembles a pilot — trustworthiness personified."
+      }
+    ],
+    "LAWYER": [
+      {
+        "from": "P1-01",
+        "desc": "The Lawyer. The best of old fellows. Has the only cushion on deck."
+      }
+    ],
+    "ACCOUNTANT_NELLIE": [
+      {
+        "from": "P1-01",
+        "desc": "The Accountant aboard the Nellie. Brought out a box of dominoes and was toying with them architecturally."
+      }
+    ],
+    "SWEDISH_CAPTAIN": [
+      {
+        "from": "P1-04",
+        "desc": "Captain of the little coastal steamer that brings Marlow to the Company station. A young, morose Swede who speaks bitterly about the government officials and mentions a fellow Swede who hanged himself on the road."
+      }
+    ],
+    "BOILERMAKER": [
+      {
+        "from": "P1-10",
+        "desc": "A lank, bony boilermaker at the Central Station. A widower with six children and a passion for pigeon-flying. Wraps his long beard in a white serviette while working under the steamboat. Shares Marlow's excitement about the hope of rivets."
+      }
+    ],
+    "DOCTOR": [
+      {
+        "from": "P1-03",
+        "desc": "An unshaven little Company doctor. Measures the heads of those going out to Africa in the interests of science. Asks whether there is madness in Marlow's family. Warns him to avoid irritation and keep calm in the tropics."
+      }
+    ],
+    "KNITTING_WOMEN": [
+      {
+        "from": "P1-03",
+        "desc": "Two women knitting black wool at the Company's office. The slim young one introduces visitors; the old one with silver-rimmed spectacles scrutinizes them with unconcerned wisdom. Marlow later thinks of them as guardians of the door of Darkness."
+      }
+    ],
+    "PILGRIMS": [
+      {
+        "from": "P2-02",
+        "desc": "The Company agents who travel aboard the steamer. Marlow calls them pilgrims because they wander with long staves and worship ivory. They carry Winchesters."
+      },
+      {
+        "from": "P2-05",
+        "desc": "The Company agents aboard the steamer. Carry Winchesters and fire from the hip with their eyes shut. During the arrow attack they blaze away into the bush without discipline. Their ivory obsession defines them."
+      }
+    ],
+    "CANNIBALS": [
+      {
+        "from": "P2-02",
+        "desc": "Thirty African men hired as crew for the steamboat. Their hippo-meat rations went rotten and were thrown overboard by the pilgrims. Marlow respects them as men one could work with and marvels at their restraint in not eating the whites."
+      }
+    ],
+    "COMPANY_REPRESENTATIVE": [
+      {
+        "from": "P3-07",
+        "desc": "A clean-shaved man with gold-rimmed spectacles who visits Marlow in Europe seeking Kurtz's documents. Claims the Company has a right to them. Marlow gives him only the report with the postscriptum torn off."
+      }
+    ],
+    "KURTZ_COUSIN": [
+      {
+        "from": "P3-07",
+        "desc": "An organist with lank grey hair. Claims Kurtz was essentially a great musician. Takes some family letters and memoranda."
+      }
+    ],
+    "JOURNALIST": [
+      {
+        "from": "P3-07",
+        "desc": "A colleague of Kurtz with bristly hair and an eyeglass. Says Kurtz could electrify large meetings and would have made a splendid leader of any extreme party. Takes the famous Report for publication."
+      }
+    ]
+  }
+}

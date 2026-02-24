@@ -1,0 +1,55 @@
+[
+  {
+    "type": "missing_character",
+    "scene": "P1-04",
+    "detail": "Summary mentions the Swedish Captain ('a young, morose Swede who mentions that a fellow Swede hanged himself') but chars array does not include SWEDISH_CAPTAIN."
+  },
+  {
+    "type": "missing_character",
+    "scene": "P1-10",
+    "detail": "Summary mentions the Manager ('speaks to no one but his nephew the Manager') but chars array does not include MANAGER."
+  },
+  {
+    "type": "missing_character",
+    "scene": "P3-01",
+    "detail": "Summary mentions the Manager ('The Manager later said Kurtz's methods had ruined the district') but chars array does not include MANAGER."
+  },
+  {
+    "type": "missing_character",
+    "scene": "P3-06",
+    "detail": "Summary mentions the pilgrims ('The pilgrims rush out') but chars array does not include PILGRIMS."
+  },
+  {
+    "type": "missing_character",
+    "scene": "P3-09",
+    "detail": "Summary mentions the Director of Companies ('The Director of Companies says We have lost the first of the ebb') but chars array does not include DIRECTOR."
+  },
+  {
+    "type": "missing_location",
+    "scene": "P3-08",
+    "detail": "Summary explicitly names the sepulchral city ('at her home in the sepulchral city') but locs array includes only INTENDED_HOUSE. Consider adding SEPULCHRAL_CITY."
+  },
+  {
+    "type": "description_regression",
+    "entity": "KURTZ",
+    "from_scene": "P1-09",
+    "detail": "Description at P1-09 drops the key fact that Kurtz sends in more ivory than all the other agents combined, established at P1-06. The ivory-sending reputation is his most defining trait at this point."
+  },
+  {
+    "type": "description_regression",
+    "entity": "RUSSIAN",
+    "from_scene": "P3-01",
+    "detail": "Description at P3-01 drops the colourful patched clothes and Russian-from-Tambov backstory established at P2-07. Later description focuses on discipleship but loses the vivid physical and biographical details."
+  },
+  {
+    "type": "description_regression",
+    "entity": "INTENDED",
+    "from_scene": "P3-08",
+    "detail": "Description at P3-08 drops the fact that her family disapproved of the engagement, established at P3-07."
+  },
+  {
+    "type": "incomplete_coverage",
+    "entity": "PILGRIMS",
+    "detail": "PILGRIMS appear in 7 scenes (P2-02, P2-04, P2-05, P2-06, P2-07, P3-02, P3-05) but have only 1 description entry (at P2-02). They probably need at least one progression description covering their role in the attack and departure scenes."
+  }
+]
