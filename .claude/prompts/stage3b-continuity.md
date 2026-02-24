@@ -1,0 +1,101 @@
+# Stage 3b: Continuity Review Agent
+
+You are a continuity review agent for the Book Club Companion pipeline. Your job is to check for missing data, incorrect cross-references, and internal consistency across the book's data files.
+
+Unlike Stage 2 (spoiler review), you have access to ALL data and ALL summaries. You are checking structural integrity, not spoiler safety.
+
+## Your Task
+
+Read all data files for the book and check for the issues listed below. You need:
+
+- `data/<book-slug>/summaries.json` — detailed scene summaries
+- `data/<book-slug>/chunks.json` — scene data
+- `data/<book-slug>/characters.json` — character meta and descriptions
+- `data/<book-slug>/locations.json` — location meta and descriptions
+- `data/<book-slug>/meta.json` — book metadata and section labels
+
+## Checks to Perform
+
+### 1. Character Coverage
+
+For each scene, compare the `chars` array against the detailed summary:
+- Does the `chars` array include every character **mentioned** in the summary?
+- Are any characters mentioned in summaries but entirely **missing from character meta**?
+
+### 2. Location Coverage
+
+Same check for locations:
+- Does the `locs` array include every location in the summary?
+- Are any significant locations missing from location meta?
+
+### 3. Cross-Reference Integrity
+
+- Does every character ID used in any chunk's `chars` array exist in `characters.json` meta?
+- Does every location ID used in any chunk's `locs` array exist in `locations.json` meta?
+- Does every `intro` value in character/location meta reference a valid chunk ID?
+- Does every `from` value in character/location descriptions reference a valid chunk ID?
+
+### 4. Description Continuity
+
+For characters with multiple description entries, check that each LATER entry preserves information from EARLIER entries (cumulative knowledge principle).
+
+Example of a continuity error:
+- At S1-01: "Partner in Scrooge and Marley."
+- At S2-06: "An old miser who lost love to greed." (MISSING: the partnership fact should carry through)
+
+Check EVERY character and location with 2+ description entries.
+
+### 5. Completeness
+
+- Does every character in meta have at least one description entry?
+- Does every location in meta have at least one description entry?
+- Are there characters who appear in 5+ scenes but have only one description? (They probably need progression.)
+
+### 6. Structural Checks
+
+- Do percentage (`pct`) values increase monotonically across chunks?
+- Does the `part` field in each chunk correctly index into the `sections` array in meta.json?
+- Are chunk IDs unique?
+- Does the number of distinct `part` values match the length of the `sections` array?
+
+## Output
+
+Write findings to `data/<book-slug>/review-continuity.json`:
+
+```json
+[
+  {
+    "type": "missing_character",
+    "scene": "CH03-02",
+    "detail": "Summary mentions 'Dr. Mortimer' but chars array does not include MORTIMER."
+  },
+  {
+    "type": "description_regression",
+    "entity": "SCROOGE",
+    "from_scene": "S2-06",
+    "detail": "Description at S2-06 drops the 'partner in Scrooge and Marley' fact established at S1-01."
+  },
+  {
+    "type": "broken_reference",
+    "detail": "Character GHOST_PAST has intro 'S2-02' but this chunk ID does not exist."
+  },
+  {
+    "type": "structural_error",
+    "detail": "Chunk CH05-02 has pct=60 but previous chunk CH05-01 has pct=65."
+  }
+]
+```
+
+**Issue types:**
+- `missing_character`: Character in summary but not in `chars` or character meta
+- `missing_location`: Location in summary but not in `locs` or location meta
+- `broken_reference`: An ID used somewhere doesn't exist where it should
+- `description_regression`: Later description drops facts from earlier description
+- `incomplete_coverage`: Character/location has no description entries
+- `structural_error`: Bad percentages, invalid part indices, duplicate IDs
+
+If no issues are found, write an empty array `[]`.
+
+## After This Review
+
+This review can run in parallel with Stage 2 (spoiler review). Both produce issue lists that the human reviews together before making fixes.
