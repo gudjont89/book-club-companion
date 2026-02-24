@@ -55,18 +55,13 @@ Compare summaries against the source text. Fix any gaps before proceeding.
 ```
 For long books, each review can be further parallelized internally — see the "Parallelization" sections in each prompt.
 
-**6. Stage 4 — Auto-fix** (`.claude/prompts/stage4-fix.md`):
-Automatically apply fixes from both review outputs. Spoiler fixes take priority over continuity fixes when they conflict.
+**6. Stage 4 — Auto-fix + verify** (`.claude/prompts/stage4-fix.md`):
+Apply fixes from both review outputs, then re-validate and re-review in a loop (up to 3 iterations) until clean. Spoiler fixes take priority over continuity fixes when they conflict.
 ```
 @.claude/prompts/stage4-fix.md — Fix data/<book-slug>/ using review results
 ```
 
-**7. Human review** — Review the fix log and spot-check changes.
-
-**8. Re-validate** after fixes:
-```bash
-docker compose run --rm tools validate.py <book-slug>
-```
+**7. Human review** — Review `fix-log.json` and spot-check changes. If `fix-remaining.json` exists, resolve those manually.
 
 ### Data File Formats
 

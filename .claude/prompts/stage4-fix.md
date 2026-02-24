@@ -89,8 +89,48 @@ After applying fixes:
 
 3. Report what was changed so the human can review
 
-## After This Stage
+## Verify and Loop
 
-Run validation: `docker compose run --rm tools validate.py <book-slug>`
+After applying fixes, verify the data is clean. If not, loop.
 
-If validation fails, fix the issue and re-validate. The data should be clean after this stage.
+### Iteration 1 (always runs)
+
+1. Apply all fixes from review files (as described above)
+2. Write updated data files and `fix-log.json`
+3. Run validation: `docker compose run --rm tools validate.py <book-slug>`
+4. If validation fails, fix the issue immediately
+5. Re-run the spoiler review (Stage 2) and continuity review (Stage 3b) on the updated data
+6. If both reviews produce empty arrays `[]`, **stop — the data is clean**
+7. If new issues were found, proceed to iteration 2
+
+### Iteration 2+ (only if issues remain)
+
+1. Read the new review outputs
+2. Apply fixes using the same rules above
+3. Write updated data files, append to `fix-log.json`
+4. Run validation
+5. Re-run reviews
+6. If clean, stop. Otherwise, continue.
+
+### Iteration cap
+
+**Stop after 3 iterations maximum.** If issues remain after 3 rounds:
+1. Write the remaining issues to `data/<book-slug>/fix-remaining.json`
+2. Note in `fix-log.json`: `"status": "incomplete"` and `"remaining_issues": N`
+3. These will need human review
+
+### Why loop?
+
+Fixes can introduce new issues. For example:
+- Adding a missing character to a scene's `chars` array may require creating a new meta entry, which needs an `intro` and description — if the description is wrong, the next review catches it
+- Rewriting a description to remove a spoiler may drop a fact that the continuity review then flags as a regression
+- Moving a detail to a later description entry may trigger a new existence check
+
+Most books will be clean after iteration 1. The loop is a safety net.
+
+### Re-review scope
+
+On iterations 2+, you only need to re-review **the scenes and entities you touched** in the previous iteration. You don't need to re-review the entire book. Specifically:
+- Run the spoiler review only on scenes where descriptions, roles, or `chars`/`locs` arrays were modified
+- Run the continuity review only on entities whose descriptions were modified
+- Always re-run structural validation on the full dataset (it's fast)
